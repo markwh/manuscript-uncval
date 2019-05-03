@@ -1,0 +1,113 @@
+# Results
+
+The results are presented in 2 parts. Part 1 considers all validation data as a single set over which uncertainty estimates are evaluated. It seeks a simple yes/no answer to the question of whether predicted uncertainty matches empirical errors across the entire validation set. Phases 2 and separates results depending on variables such as uncertainty magnitude and feature size and seeks out relationships between these variables and error magnitude. 
+
+
+## Node Results
+
+Node variables validated include height, height2, width, and total area. The "height2" variable differs from "height" only in its uncertainty estimate (using a different method to estimate uncertainty).
+
+The results in phase 1 are presented in 3 forms: Chi-square hypothesis tests of empirical variance, plots comparing theoretical to empirical distributions, and tables comparing theoretical to empirical statistics. Results at the node scale are presented in section ####; reach-scale results are presented in section ####. 
+
+### Hypothesis tests
+
+In the combined validation data from all 3 passes, 2-sided chi-square hypothesis tests rejected the null hypothesis ($\sigma = \hat{\sigma}$) for all node variables at a significance level of 0.05. Even when errors were bias-adjusted the results of the hypothesis test are the same (Table ####). This indicates that empirical variance was significantly different from modeled variance. However, the hypothesis test for height was only marginally significant ($p = 0.035$ and $0.043$ for non-adjusted and bias-adjusted, respectively), whereas all other variables had highly significant hypothesis tests ($p < 10^{-6}$).
+
+
+```{r}
+load("robjs/node_ht.RData")
+kable(node_ht, format.args = list(scientific = -2))
+```
+
+
+Restricting the validation to include only the lower-flow conditions (days 110 and 119) gives a different result for height; here the test does not reject the null hypthesis $\sigma = \hat{\sigma}$ at a significance level of 0.05 when bias is removed. All other variables have error variance that is again significantly different from the estimated variance. 
+
+```{r}
+load("robjs/node_htsset.RData")
+kable(node_htsset, format.args = list(scientific = -2))
+```
+
+
+### Distribution plots
+
+Histograms for node-level scaled errors (Fig. ####) illustrate the difference between the empirical (histogram) and theoretical (smooth curve) error distributions. Area and width (a nodewise constant scaling of area) have heavy upper tails, especially for the high-flow day 220, indicating a tendency to vastly overestimate node areas in some cases. Three of the worst overestimates (nodes 286, 301, and 360) are mapped below, and their aggregation of pixels compared to the validation truth in figure ####.
+
+```{r}
+load("robjs/histgg1.RData")
+histgg1
+```
+
+
+```{r, eval = FALSE}
+# Put node-area plots here
+```
+
+Normal quantile-quantile plots (Fig. ####) illustrate the deviation of emprical scaled errors from the theoretical $N(0, 1)$ distribution (solid black line). While the height errors closely match the theoretical distribution for day 109, day 220 slightly but consistently overestimates large height errors, enough to cause the hypothesis test to reject the equality of theoretical and empirical variance. Height2 scaled errors are apparently Gaussian (falling on a straight line in the QQ plot), but have a larger variance than is predicted (slope of a line through the scaled errors is greater than 1). Width and area scaled errors diverge considerably from the theoretical distribution, and the behavior is markedly different between days 109 and 220. Both days' scaled errors diverge from the theoretical $N(0,1)$ line, but whereas Day 220 has a heavy upper tail, day 109 appears to be Gaussian, but with a larger variance than predicted. 
+
+```{r}
+load("robjs/qqgg1.RData")
+qqgg1
+```
+
+```{r}
+load("robjs/scattergg1.RData")
+scattergg1
+```
+
+
+
+
+### Tables 
+
+Coverage rates for various confidence intervals (Table ####) again reflect the underestimation of variance in the uncertainty models. Only the 99% confidence interval for height contains the expected amount (99%) of the data; all other intervals contain less than the theoretical amount. 
+
+```{r}
+load("robjs/covdf.RData")
+kable(covdf, digits = 1)
+```
+
+Summary statistics (Table ####) indicate exactly by how much empirical statistics (bias, standard deviation, RMSE), differ from theoretical values (0, 1, and 1, respectively). Area and width $\hat{\sigma}$'s would need to be multiplied by a factor of 2.36 in order to match the theoretical variance (including bias), whereas $\hat{\sigma}$ for height and height2 would require smaller adjustments. 
+
+```{r}
+load("robjs/sumstatdf.RData")
+kable(sumstatdf, digits = 2)
+```
+
+
+## Reach results 
+
+```{r, eval = FALSE}
+load("robjs/reach_gg1.RData")
+reach_gg1
+```
+
+```{r}
+load("robjs/reachht.RData")
+kable(reachht, digits = 2)
+```
+
+
+
+## Part 2: Factors affecting errors and uncertainty
+
+- Uncertainty estimates are a function of variables including
+  - number of pixels/nodes
+  - position in cross-track
+  
+```{r}
+load("robjs/err_gg1.RData")
+err_gg1
+```
+
+```{r}
+load("robjs/unc_gg1.RData")
+unc_gg1
+```
+
+```{r}
+load("robjs/scalerr_gg1.RData")
+scalerr_gg1
+```
+
+
+

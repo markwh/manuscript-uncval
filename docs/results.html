@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>4 Results | Uncertainty Validation</title>
+  <meta name="description" content="A synthesis of SWOT uncertainty model validation using simulations on the Sacramento River.">
+  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+
+  <meta property="og:title" content="4 Results | Uncertainty Validation" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A synthesis of SWOT uncertainty model validation using simulations on the Sacramento River." />
+  <meta name="github-repo" content="markwh/swot-error" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Results | Uncertainty Validation" />
+  
+  <meta name="twitter:description" content="A synthesis of SWOT uncertainty model validation using simulations on the Sacramento River." />
+  
+
+<meta name="author" content="Mark Hagemann">
+
+
+<meta name="date" content="2019-05-03">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="methods.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Abstract</a></li>
+<li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a><ul>
+<li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#swot-river-data-products"><i class="fa fa-check"></i><b>3.1</b> SWOT River Data Products</a></li>
+<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#datasets"><i class="fa fa-check"></i><b>3.2</b> Datasets</a></li>
+<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#error-scaling"><i class="fa fa-check"></i><b>3.3</b> Error scaling</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="methods.html"><a href="methods.html#error-decomposition"><i class="fa fa-check"></i><b>3.3.1</b> Error Decomposition</a></li>
+<li class="chapter" data-level="3.3.2" data-path="methods.html"><a href="methods.html#assumptions-of-normality"><i class="fa fa-check"></i><b>3.3.2</b> Assumptions of Normality</a></li>
+<li class="chapter" data-level="3.3.3" data-path="methods.html"><a href="methods.html#tests-for-validity-of-hatsigma_x"><i class="fa fa-check"></i><b>3.3.3</b> Tests for validity of <span class="math inline">\(\hat{\sigma}_{x}\)</span></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a><ul>
+<li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#node-results"><i class="fa fa-check"></i><b>4.1</b> Node Results</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="results.html"><a href="results.html#hypothesis-tests"><i class="fa fa-check"></i><b>4.1.1</b> Hypothesis tests</a></li>
+<li class="chapter" data-level="4.1.2" data-path="results.html"><a href="results.html#distribution-plots"><i class="fa fa-check"></i><b>4.1.2</b> Distribution plots</a></li>
+<li class="chapter" data-level="4.1.3" data-path="results.html"><a href="results.html#tables"><i class="fa fa-check"></i><b>4.1.3</b> Tables</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#reach-results"><i class="fa fa-check"></i><b>4.2</b> Reach results</a></li>
+<li class="chapter" data-level="4.3" data-path="results.html"><a href="results.html#part-2-factors-affecting-errors-and-uncertainty"><i class="fa fa-check"></i><b>4.3</b> Part 2: Factors affecting errors and uncertainty</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Uncertainty Validation</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="results" class="section level1">
+<h1><span class="header-section-number">4</span> Results</h1>
+<p>The results are presented in 2 parts. Part 1 considers all validation data as a single set over which uncertainty estimates are evaluated. It seeks a simple yes/no answer to the question of whether predicted uncertainty matches empirical errors across the entire validation set. Phases 2 and separates results depending on variables such as uncertainty magnitude and feature size and seeks out relationships between these variables and error magnitude.</p>
+<div id="node-results" class="section level2">
+<h2><span class="header-section-number">4.1</span> Node Results</h2>
+<p>Node variables validated include height, height2, width, and total area. The “height2” variable differs from “height” only in its uncertainty estimate (using a different method to estimate uncertainty).</p>
+<p>The results in phase 1 are presented in 3 forms: Chi-square hypothesis tests of empirical variance, plots comparing theoretical to empirical distributions, and tables comparing theoretical to empirical statistics. Results at the node scale are presented in section ####; reach-scale results are presented in section ####.</p>
+<div id="hypothesis-tests" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Hypothesis tests</h3>
+<p>In the combined validation data from all 3 passes, 2-sided chi-square hypothesis tests rejected the null hypothesis (<span class="math inline">\(\sigma = \hat{\sigma}\)</span>) for all node variables at a significance level of 0.05. Even when errors were bias-adjusted the results of the hypothesis test are the same (Table ####). This indicates that empirical variance was significantly different from modeled variance. However, the hypothesis test for height was only marginally significant (<span class="math inline">\(p = 0.035\)</span> and <span class="math inline">\(0.043\)</span> for non-adjusted and bias-adjusted, respectively), whereas all other variables had highly significant hypothesis tests (<span class="math inline">\(p &lt; 10^{-6}\)</span>).</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">variable</th>
+<th align="right">teststat</th>
+<th align="right">df</th>
+<th align="right">pval</th>
+<th align="right">pval_debias</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">area_total</td>
+<td align="right">14840.043</td>
+<td align="right">1877</td>
+<td align="right">0</td>
+<td align="right">0.0000e+00</td>
+</tr>
+<tr class="even">
+<td align="left">height</td>
+<td align="right">2256.927</td>
+<td align="right">1877</td>
+<td align="right">0</td>
+<td align="right">3.7398e-03</td>
+</tr>
+<tr class="odd">
+<td align="left">height2</td>
+<td align="right">3590.144</td>
+<td align="right">1877</td>
+<td align="right">0</td>
+<td align="right">0.0000e+00</td>
+</tr>
+<tr class="even">
+<td align="left">width</td>
+<td align="right">14840.042</td>
+<td align="right">1877</td>
+<td align="right">0</td>
+<td align="right">0.0000e+00</td>
+</tr>
+</tbody>
+</table>
+<p>Restricting the validation to include only the lower-flow conditions (days 110 and 119) gives a different result for height; here the test does not reject the null hypthesis <span class="math inline">\(\sigma = \hat{\sigma}\)</span> at a significance level of 0.05 when bias is removed. All other variables have error variance that is again significantly different from the estimated variance.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">variable</th>
+<th align="right">teststat</th>
+<th align="right">df</th>
+<th align="right">pval</th>
+<th align="right">pval_debias</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">area_total</td>
+<td align="right">8542.081</td>
+<td align="right">1179</td>
+<td align="right">0e+00</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td align="left">height</td>
+<td align="right">1439.903</td>
+<td align="right">1179</td>
+<td align="right">5e-07</td>
+<td align="right">0.3840719</td>
+</tr>
+<tr class="odd">
+<td align="left">height2</td>
+<td align="right">2531.810</td>
+<td align="right">1179</td>
+<td align="right">0e+00</td>
+<td align="right">0.0000000</td>
+</tr>
+<tr class="even">
+<td align="left">width</td>
+<td align="right">8542.081</td>
+<td align="right">1179</td>
+<td align="right">0e+00</td>
+<td align="right">0.0000000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="distribution-plots" class="section level3">
+<h3><span class="header-section-number">4.1.2</span> Distribution plots</h3>
+<p>Histograms for node-level scaled errors (Fig. ####) illustrate the difference between the empirical (histogram) and theoretical (smooth curve) error distributions. Area and width (a nodewise constant scaling of area) have heavy upper tails, especially for the high-flow day 220, indicating a tendency to vastly overestimate node areas in some cases. Three of the worst overestimates (nodes 286, 301, and 360) are mapped below, and their aggregation of pixels compared to the validation truth in figure ####.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>Normal quantile-quantile plots (Fig. ####) illustrate the deviation of emprical scaled errors from the theoretical <span class="math inline">\(N(0, 1)\)</span> distribution (solid black line). While the height errors closely match the theoretical distribution for day 109, day 220 slightly but consistently overestimates large height errors, enough to cause the hypothesis test to reject the equality of theoretical and empirical variance. Height2 scaled errors are apparently Gaussian (falling on a straight line in the QQ plot), but have a larger variance than is predicted (slope of a line through the scaled errors is greater than 1). Width and area scaled errors diverge considerably from the theoretical distribution, and the behavior is markedly different between days 109 and 220. Both days’ scaled errors diverge from the theoretical <span class="math inline">\(N(0,1)\)</span> line, but whereas Day 220 has a heavy upper tail, day 109 appears to be Gaussian, but with a larger variance than predicted.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+</div>
+<div id="tables" class="section level3">
+<h3><span class="header-section-number">4.1.3</span> Tables</h3>
+<p>Coverage rates for various confidence intervals (Table ####) again reflect the underestimation of variance in the uncertainty models. Only the 99% confidence interval for height contains the expected amount (99%) of the data; all other intervals contain less than the theoretical amount.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">ci68</th>
+<th align="right">ci90</th>
+<th align="right">ci95</th>
+<th align="right">ci99</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>area_total</td>
+<td align="right">34.3</td>
+<td align="right">55.1</td>
+<td align="right">61.1</td>
+<td align="right">73.7</td>
+</tr>
+<tr class="even">
+<td>height</td>
+<td align="right">65.5</td>
+<td align="right">87.1</td>
+<td align="right">93.2</td>
+<td align="right">97.8</td>
+</tr>
+<tr class="odd">
+<td>height2</td>
+<td align="right">53.7</td>
+<td align="right">77.6</td>
+<td align="right">85.8</td>
+<td align="right">93.7</td>
+</tr>
+<tr class="even">
+<td>width</td>
+<td align="right">34.3</td>
+<td align="right">55.1</td>
+<td align="right">61.1</td>
+<td align="right">73.7</td>
+</tr>
+</tbody>
+</table>
+<p>Summary statistics (Table ####) indicate exactly by how much empirical statistics (bias, standard deviation, RMSE), differ from theoretical values (0, 1, and 1, respectively). Area and width <span class="math inline">\(\hat{\sigma}\)</span>’s would need to be multiplied by a factor of 2.36 in order to match the theoretical variance (including bias), whereas <span class="math inline">\(\hat{\sigma}\)</span> for height and height2 would require smaller adjustments.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">variable</th>
+<th align="right">bias</th>
+<th align="right">sd</th>
+<th align="right">rmse</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">area_total</td>
+<td align="right">1.30</td>
+<td align="right">2.49</td>
+<td align="right">2.81</td>
+</tr>
+<tr class="even">
+<td align="left">height</td>
+<td align="right">0.32</td>
+<td align="right">1.05</td>
+<td align="right">1.10</td>
+</tr>
+<tr class="odd">
+<td align="left">height2</td>
+<td align="right">0.43</td>
+<td align="right">1.32</td>
+<td align="right">1.38</td>
+</tr>
+<tr class="even">
+<td align="left">width</td>
+<td align="right">1.30</td>
+<td align="right">2.49</td>
+<td align="right">2.81</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="reach-results" class="section level2">
+<h2><span class="header-section-number">4.2</span> Reach results</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">variable</th>
+<th align="right">teststat</th>
+<th align="right">df</th>
+<th align="right">pval</th>
+<th align="right">pval_debias</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">area_total</td>
+<td align="right">8583.35</td>
+<td align="right">28</td>
+<td align="right">0.00</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="even">
+<td align="left">height</td>
+<td align="right">162.64</td>
+<td align="right">28</td>
+<td align="right">0.00</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="odd">
+<td align="left">slope</td>
+<td align="right">36.74</td>
+<td align="right">28</td>
+<td align="right">0.25</td>
+<td align="right">0.41</td>
+</tr>
+<tr class="even">
+<td align="left">width</td>
+<td align="right">9199.21</td>
+<td align="right">28</td>
+<td align="right">0.00</td>
+<td align="right">0.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="part-2-factors-affecting-errors-and-uncertainty" class="section level2">
+<h2><span class="header-section-number">4.3</span> Part 2: Factors affecting errors and uncertainty</h2>
+<ul>
+<li>Uncertainty estimates are a function of variables including
+<ul>
+<li>number of pixels/nodes</li>
+<li>position in cross-track</li>
+</ul></li>
+</ul>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="methods.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
