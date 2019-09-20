@@ -1,0 +1,17 @@
+---
+title: "manusript todo"
+author: "Mark Hagemann"
+date: "9/20/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+TODO:
+
+- rename "agg" legend and agg methods (composite, etc.) in widthqq_compare_all3 fig
+- Make maps of bad nodes, showing pixels
+- Add description, illustration of node flagging. 

@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>3 Methods | Uncertainty Validation</title>
-  <meta name="description" content="A synthesis of SWOT uncertainty model validation using simulations on the Sacramento River.">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="A synthesis of SWOT uncertainty model validation using simulations on the Sacramento River." />
+  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
 
   <meta property="og:title" content="3 Methods | Uncertainty Validation" />
   <meta property="og:type" content="book" />
   
   
   <meta property="og:description" content="A synthesis of SWOT uncertainty model validation using simulations on the Sacramento River." />
-  <meta name="github-repo" content="markwh/swot-error" />
+  <meta name="github-repo" content="markwh/manuscript-uncval" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="3 Methods | Uncertainty Validation" />
@@ -22,18 +21,18 @@
   <meta name="twitter:description" content="A synthesis of SWOT uncertainty model validation using simulations on the Sacramento River." />
   
 
-<meta name="author" content="Mark Hagemann">
+<meta name="author" content="Mark Hagemann" />
 
 
-<meta name="date" content="2019-05-03">
+<meta name="date" content="2019-09-20" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="introduction.html">
-<link rel="next" href="results.html">
+<link rel="prev" href="introduction.html"/>
+<link rel="next" href="results.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -66,22 +65,25 @@
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Abstract</a></li>
 <li class="chapter" data-level="2" data-path="introduction.html"><a href="introduction.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
 <li class="chapter" data-level="3" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>3</b> Methods</a><ul>
-<li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#swot-river-data-products"><i class="fa fa-check"></i><b>3.1</b> SWOT River Data Products</a></li>
-<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#datasets"><i class="fa fa-check"></i><b>3.2</b> Datasets</a></li>
-<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#error-scaling"><i class="fa fa-check"></i><b>3.3</b> Error scaling</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="methods.html"><a href="methods.html#error-decomposition"><i class="fa fa-check"></i><b>3.3.1</b> Error Decomposition</a></li>
-<li class="chapter" data-level="3.3.2" data-path="methods.html"><a href="methods.html#assumptions-of-normality"><i class="fa fa-check"></i><b>3.3.2</b> Assumptions of Normality</a></li>
-<li class="chapter" data-level="3.3.3" data-path="methods.html"><a href="methods.html#tests-for-validity-of-hatsigma_x"><i class="fa fa-check"></i><b>3.3.3</b> Tests for validity of <span class="math inline">\(\hat{\sigma}_{x}\)</span></a></li>
+<li class="chapter" data-level="3.1" data-path="methods.html"><a href="methods.html#swot-satellite-overview-and-observation-characteristics"><i class="fa fa-check"></i><b>3.1</b> SWOT satellite overview and observation characteristics</a></li>
+<li class="chapter" data-level="3.2" data-path="methods.html"><a href="methods.html#swot-river-data-products"><i class="fa fa-check"></i><b>3.2</b> SWOT River Data Products</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="methods.html"><a href="methods.html#node-product"><i class="fa fa-check"></i><b>3.2.1</b> Node product</a></li>
+<li class="chapter" data-level="3.2.2" data-path="methods.html"><a href="methods.html#reach-level-product"><i class="fa fa-check"></i><b>3.2.2</b> Reach-level product</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#simulated-datasets"><i class="fa fa-check"></i><b>3.3</b> Simulated Datasets</a></li>
+<li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#error-scaling"><i class="fa fa-check"></i><b>3.4</b> Error scaling</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="methods.html"><a href="methods.html#assumptions-of-normality"><i class="fa fa-check"></i><b>3.4.1</b> Assumptions of Normality</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a><ul>
 <li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#node-results"><i class="fa fa-check"></i><b>4.1</b> Node Results</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="results.html"><a href="results.html#hypothesis-tests"><i class="fa fa-check"></i><b>4.1.1</b> Hypothesis tests</a></li>
-<li class="chapter" data-level="4.1.2" data-path="results.html"><a href="results.html#distribution-plots"><i class="fa fa-check"></i><b>4.1.2</b> Distribution plots</a></li>
-<li class="chapter" data-level="4.1.3" data-path="results.html"><a href="results.html#tables"><i class="fa fa-check"></i><b>4.1.3</b> Tables</a></li>
+<li class="chapter" data-level="4.1.1" data-path="results.html"><a href="results.html#factors-affecting-node-level-errors-and-uncertainty"><i class="fa fa-check"></i><b>4.1.1</b> Factors affecting node-level errors and uncertainty</a></li>
+<li class="chapter" data-level="4.1.2" data-path="results.html"><a href="results.html#worst-offending-nodes"><i class="fa fa-check"></i><b>4.1.2</b> Worst offending nodes</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#reach-results"><i class="fa fa-check"></i><b>4.2</b> Reach results</a></li>
-<li class="chapter" data-level="4.3" data-path="results.html"><a href="results.html#part-2-factors-affecting-errors-and-uncertainty"><i class="fa fa-check"></i><b>4.3</b> Part 2: Factors affecting errors and uncertainty</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>5</b> Discussion</a><ul>
+<li class="chapter" data-level="5.0.1" data-path="discussion.html"><a href="discussion.html#random-systematic-error-partitioning"><i class="fa fa-check"></i><b>5.0.1</b> Random-systematic error partitioning</a></li>
 </ul></li>
 </ul>
 
@@ -102,114 +104,168 @@
             <section class="normal" id="section-">
 <div id="methods" class="section level1">
 <h1><span class="header-section-number">3</span> Methods</h1>
-<div id="swot-river-data-products" class="section level2">
-<h2><span class="header-section-number">3.1</span> SWOT River Data Products</h2>
-<ul>
-<li>SLC product, simulation thereof</li>
-<li>Stages of processing, fields calculated
-<ul>
-<li>Pixel cloud</li>
-<li>node assignment</li>
-<li>reach aggregation
-<ul>
-<li>computation of slope</li>
-</ul></li>
-</ul></li>
-<li>Prior database, uses
-<ul>
-<li>Required to assign pixels</li>
-<li>Refinement of prior db</li>
-</ul></li>
-</ul>
+<div id="swot-satellite-overview-and-observation-characteristics" class="section level2">
+<h2><span class="header-section-number">3.1</span> SWOT satellite overview and observation characteristics</h2>
+<p>The SWOT satellite will orbit at #### km altitude, with an orbit period of ####. This combined with an azimuth angle of #### results in successive orbits having a spacing of #### at the equator. The on-board wide-swath Ka-band radar interferometer converts phase and range information into observations of water surface height and spatial extent. These observations are distributed over two swaths extending between roughly 10 km and 64 km perpendicular to the ground track of the satellite on either side of the track.</p>
 </div>
-<div id="datasets" class="section level2">
-<h2><span class="header-section-number">3.2</span> Datasets</h2>
-<p>The study area consists of 733 nodes in comprising 10 reaches in the Sacramento River between 38.92 and 39.75 degrees latitude. Two simulations of the SWOT single-look complex (SLC) were created using two different flow conditions; other simulation parameters including <span class="math inline">\(\sigma_0\)</span> for water and land, SWOT pass number, and smearing distance were held constand. The water and land <span class="math inline">\(\sigma_0\)</span> were selected so as to remove any impact of layover.</p>
-<ul>
-<li>Datasets come from simulation of SWOT SLC using hydrodynamic models forced by observed hydrologic conditions</li>
-<li>Validation data come from GDEM</li>
-<li>Simulated river is #### km section of Sacramento River</li>
-<li>Passes of SWOT satellite</li>
-</ul>
+<div id="swot-river-data-products" class="section level2">
+<h2><span class="header-section-number">3.2</span> SWOT River Data Products</h2>
+<p>The SWOT satellite mission will produce and disseminate data products at several scales of spatial aggregation. Here we consider two products of particular interest to river hydrology: the node product and the reach product. Ultimately these are all generated using the on-board wide-swath synthetic-aperature radar interferometer, and several processing steps are performed–and intermeidate products created–prior to geolocation.</p>
+<div id="node-product" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Node product</h3>
+<p>SWOT nodes are spatially fixed points defined at roughly 200m intervals along SWOT-observable river sections (broadly, those with average width &gt; 100m). These nodes are populated with observations for each pass of the SWOT satellite for which the node is in the swath. The node observations are aggregated from a lower-level product, the pixel cloud, based on proximity. Observed variables include node height relative to geoid, average node width, and node area.</p>
+<div id="pixel-to-node-aggregation" class="section level4">
+<h4><span class="header-section-number">3.2.1.1</span> Pixel to node aggregation</h4>
+<p>The node-level measurements are aggregated from pixel measurements depending on the variable. Pixel measurements include height relative to geoid, latitude/longitude, pixel area, and water fraction–all with corresponding 1-<span class="math inline">\(\sigma\)</span> uncertainty estimates. Additionally, the pixels contain a classification with values including “land”, “land near water”, “water near land”, and “interior water”. These classifications do not necessarily reflect the esitmated water fraction and are based on edge detection after the water mask is regularized from a noisy reflectance image and segmented into distinct features.</p>
+<p>Node heights are computed as the mean of interior water pixel heights, weighted by inverse height variance (squared uncertainty estimate). Node area is computed in one of 3 ways–“simple”, “water fraction”, and “composite”. In the simple method, node area is computed as the sum of pixel area for “interior water” and “water near land” pixels. In the “water fraction” method, the pixel areas of “land near water”, “water near land”, and “interior water” are multiplied by their estimated water fraction and the sum is taken of these pixelwise products. The “composite” method is similar to the “water fraction” method, except “interior water” pixels are not multiplied by their estimated water fraction (it is assumed the water fraction is 1). Node width is computed as the dividend of node area and node length, where the latter is a fixed constant corresponding to the node spacing along the river.</p>
+</div>
+<div id="node-level-uncertainty-estimates" class="section level4">
+<h4><span class="header-section-number">3.2.1.2</span> Node-level uncertainty estimates</h4>
+<p>Uncertainty estimates–representing one standard deviation of random error–are provided alongside the observations, based on theoretical relationships with radar coherence, estimated reflectance of land and water, and pixel classification. At the node level, these are computed from related estimates in the pixel cloud.</p>
+<p>Water fraction uncertainty is computed using the assumption that coherent radar power is a gamma-distributed random variable with shape parameter, <span class="math inline">\(k\)</span>, equal to <span class="math inline">\(N_l\)</span>, the number of independent radar looks per pixel, and scale parameter, <span class="math inline">\(\theta\)</span>, related to water fraction, <span class="math inline">\(\alpha\)</span>, as follows:</p>
+<p><span class="math display">\[
+\theta = \frac{\alpha \mu_w + (1 - \alpha) \mu_l}{k}
+\]</span></p>
+<p>where <span class="math inline">\(\mu_w\)</span> and <span class="math inline">\(\mu_l\)</span> are the expected (mean) coherent power from water and land pixels, respectively. Using Bayes’ rule with an uninformative scale-invariant prior on <span class="math inline">\(\theta\)</span> results in a posterior distribution for <span class="math inline">\(\theta\)</span> that is inverse-Gamma with shape and scale parameters <span class="math inline">\(k = N_l\)</span> and <span class="math inline">\(\theta = 1 / p\)</span>, where <span class="math inline">\(p\)</span> is the measured coherent power. This leads to a posterior variance for <span class="math inline">\(\alpha\)</span> given by:</p>
+<p><span class="math display">\[
+\sigma^2_{\alpha, new} = \frac{N_l^2 x^2}{(\mu_w - \mu_l)^2(N_l - 1)^2(N_l - 2)}
+\]</span></p>
+<p>Water fraction uncertainty is the largest component of pixel area uncertainty (except the simple aggregation method), but other contributions from pixel assignment, pixel area are calculated depending on the aggregation method.</p>
+</div>
+</div>
+<div id="reach-level-product" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Reach-level product</h3>
+<p>The reach data product is created by aggregating over a set of nodes within a reach. SWOT reaches are defined to span roughly 10-km segments of SWOT-observable rivers, containing a fixed number of nodes. However, since not all nodes may be observed for a given pass of the satellite, a reach observations may be computed from a subset of the nodes they contain.</p>
+<p>Reach area is calculated as the sum of node areas; reach width is calculated as reach area divided by the total node length. Since nodes are equally spaced within a reach, reach width is equivalent to the mean node width in the reach.</p>
+<p>Reach height and slope are computed by fitting a weighted linear model to the node height and along-reach distance data, weighted by inverse variance of the individual node heights. Reach slope is then the slope coefficient of this model, and reach height is the linear-model prediction for height at the midpoint of the reach. This mehtod of height aggregation allows for different passes’ height observations to be directly comparable even if only a portion of the reach is observed for that pass.</p>
+<p>Reach observation uncertainty estimates come from straightforward statistical calculations using the different aggregation methods. Assuming node errors to be independent, reach-level width uncertainty (<span class="math inline">\(\sigma_{rw}\)</span>) and area uncertainty (<span class="math inline">\(\sigma_{ra}\)</span> estimates are</p>
+<p><span class="math display">\[
+\sigma_{rw} = \sqrt{\frac{1}{n}\sum_{i=1}^n \sigma_{wi}^2}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\sigma_{ra} = \sqrt{\sum_{i=1}^n \sigma_{ai}^2}
+\]</span></p>
+<p>where <span class="math inline">\(\sigma_{wi}\)</span> and <span class="math inline">\(\sigma_{ai}\)</span> are the <span class="math inline">\(i^{th}\)</span> node’s width and area uncertainty estimates, respectively.</p>
+<p>Reach-level height (<span class="math inline">\(\sigma_{rh}\)</span>) and slope <span class="math inline">\(\sigma_{rs}\)</span> uncertainty come directly from the standard error of the liner model used to estimate them:</p>
+<p><span class="math display">\[
+\sigma_{rh} = RMSE\sqrt{\frac{1}{n} + \frac{(x^* - \bar{x})^2}{\sum_{i = 1}^n (x_i - \bar{x})^2}}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\sigma_{rs} = RMSE \sqrt{\frac{1}{\sum_{i = 1}^n (x_i - \bar{x})^2}}
+\]</span></p>
+<p>where RMSE is the model root mean squared error, <span class="math inline">\(x_i\)</span> is the along-reach location of node <span class="math inline">\(i\)</span>, <span class="math inline">\(\bar{x}\)</span> is the mean along-reach location of the observed nodes, and <span class="math inline">\(x^*\)</span> is the along-reach location of the midpoint of the reach, where height is estimated.</p>
+</div>
+</div>
+<div id="simulated-datasets" class="section level2">
+<h2><span class="header-section-number">3.3</span> Simulated Datasets</h2>
+<p>The study area consists of 734 nodes comprising 10 reaches in the Sacramento River between 38.92 and 39.75 degrees latitude (Figure ####). Simulated SWOT data products were produced using a hydrodynamic model of the river forced by historic observed flow conditions and observed bathymetry. The resulting spatially distributed water-surface elevations were used to produce a simulated single-look complex (SLC) data product using a SLC simulator producted by Jet Propulsion Laboratory. This simulator mimics various radar phenomena including ####. The simulated SLC products were processed using the SWOT processing chain to create the pixel, node, and reach river products.</p>
+<pre><code>## Scale for &#39;x&#39; is already present. Adding another scale for &#39;x&#39;, which
+## will replace the existing scale.</code></pre>
+<pre><code>## Scale for &#39;y&#39; is already present. Adding another scale for &#39;y&#39;, which
+## will replace the existing scale.</code></pre>
+<pre><code>## Warning: Removed 1 rows containing missing values (geom_rect).</code></pre>
+<pre><code>## Warning: Removed 24 rows containing missing values (geom_path).</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<pre><code>## Warning: Removed 137 rows containing missing values (geom_point).</code></pre>
+<pre><code>## Warning: Removed 3 rows containing missing values (geom_segment).</code></pre>
+<pre><code>## Warning: Removed 1 rows containing missing values (geom_text).</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-3-2.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-3-3.png" width="672" /></p>
+<p>Validation of the simulated products requires a truth dataset; this was derived from a Global Digital Elevation Map (GDEM) model, produced from the ASTER NASA satellite. The GDEM was used to create a synthetic pixel cloud–in this case no SLC was produced–and processed to create truth data for nodes and reaches in the study area. ####</p>
+<p>Two sets of SWOT simulations were generated corresponding to more idealized and more realistic conceptions of land/water reflectance contrast and prior elevation information. The idealized case results in observation errors that arise from processes that are explicitly accounted for in the uncertainty estimation, whereas the realistic case includes potential un-modeled sources of error, namely phase unwrapping error and layover error. This isolation of modeled and unmodeled error sources allowed for explicit validation of uncertainty models’ representation of modeled phenomena as well as some indication of performance degradation due to unmodeled phenomena.</p>
+<p>Phase information from the radar interferometer must be “unwrapped” in order to properly map radar data onto geospatial coordinates, and this requires a reference model of water surface elevation. The idealized case uses the GDEM truth as a reference model, whereas the realistic case uses a coarser-resolution Shuttle Radar Topography Mission (SRTM) dataset for reference; SRTM will be used as the reference DEM for the operational SWOT mission. Layover errors arise when land maps onto the same phase-range coordinates as water, resulting in biased heights for the affected water features (pixels, nodes, reaches). Layover was effectively turned off in the idealized simulations by setting land reflectance to be low (-100dB), whereas the realistic case used a higher land reflectance (-5dB). Both cases used a water reflectance of 10dB, and other simulation parameters were held constant across the two cases.</p>
+<p>For each of the two simulation sets, 9 simulations were created using 3 passes and 3 cycles using observed discharge from February and March 2009. These simulations encompass a range of conditions affecting measurement error, including flow condition, number of pixels per node, and position of the observation within the swath. Discharge over the simulated days ranged from 4662 to 36610 CFS, corresponding to the 6th and 96th percentiles of flow (Figure ####) as monitored by CA Dept of Water Resources (<a href="http://cdec.water.ca.gov/dynamicapp/staMeta?station_id=HMC" class="uri">http://cdec.water.ca.gov/dynamicapp/staMeta?station_id=HMC</a>). The three passes observe the study nodes and reaches across a wide range of positions within the swath, ranging from very near-swath (&lt;10 km) in pass #### to very far swath (&gt;60 km) in pass ####. The number of pixels per node ranged from #### to #### (Figure ####).</p>
 <table>
 <thead>
 <tr class="header">
-<th align="right">pass</th>
-<th align="right">n_nodes</th>
-<th align="right">date</th>
-<th align="right">flow</th>
-<th align="right">flow_pctile</th>
+<th align="right">Date</th>
+<th align="right">Pass</th>
+<th align="right">n. nodes</th>
+<th align="right">flow (CFS)</th>
+<th align="right">flow pcntl.</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
+<td align="right">2009-01-30</td>
 <td align="right">249</td>
-<td align="right">698</td>
+<td align="right">13131</td>
+<td align="right">4662</td>
+<td align="right">6.5</td>
+</tr>
+<tr class="even">
+<td align="right">2009-01-31</td>
+<td align="right">264</td>
+<td align="right">7473</td>
+<td align="right">4595</td>
+<td align="right">5.9</td>
+</tr>
+<tr class="odd">
+<td align="right">2009-02-09</td>
+<td align="right">527</td>
+<td align="right">13143</td>
+<td align="right">4999</td>
+<td align="right">10.0</td>
+</tr>
+<tr class="even">
 <td align="right">2009-02-20</td>
+<td align="right">249</td>
+<td align="right">13131</td>
 <td align="right">9224</td>
 <td align="right">67.3</td>
 </tr>
-<tr class="even">
+<tr class="odd">
+<td align="right">2009-02-21</td>
 <td align="right">264</td>
-<td align="right">447</td>
-<td align="right">2009-01-10</td>
-<td align="right">4513</td>
-<td align="right">5.0</td>
+<td align="right">7473</td>
+<td align="right">7659</td>
+<td align="right">53.7</td>
+</tr>
+<tr class="even">
+<td align="right">2009-03-02</td>
+<td align="right">527</td>
+<td align="right">13143</td>
+<td align="right">36610</td>
+<td align="right">95.7</td>
 </tr>
 <tr class="odd">
+<td align="right">2009-03-13</td>
+<td align="right">249</td>
+<td align="right">13131</td>
+<td align="right">6515</td>
+<td align="right">34.8</td>
+</tr>
+<tr class="even">
+<td align="right">2009-03-14</td>
+<td align="right">264</td>
+<td align="right">7473</td>
+<td align="right">6370</td>
+<td align="right">32.3</td>
+</tr>
+<tr class="odd">
+<td align="right">2009-03-23</td>
 <td align="right">527</td>
-<td align="right">733</td>
-<td align="right">2009-01-19</td>
-<td align="right">4203</td>
-<td align="right">2.6</td>
+<td align="right">13143</td>
+<td align="right">6639</td>
+<td align="right">36.7</td>
 </tr>
 </tbody>
 </table>
-<p><img src="_main_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<ul>
-<li>Statistics about validation variables</li>
-</ul>
 <p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 </div>
 <div id="error-scaling" class="section level2">
-<h2><span class="header-section-number">3.3</span> Error scaling</h2>
+<h2><span class="header-section-number">3.4</span> Error scaling</h2>
 <p>The different SWOT observations are reported with estimates of <span class="math inline">\(1 \sigma\)</span> uncertainty; the objective of uncertainty validation is to determine how accurately these uncertainty estimates match the behavior of empirical errors. In order to easily compare across a set of validation data with varying uncertainty estimates, we employ a simple transformation such that the mean and variance should be equal across all transformed validation data.</p>
-<p>Consider an arbitrary measured variable (e.g. node height, reach width, pixel latitude), denoted <span class="math inline">\(x_{st}\)</span>, where <span class="math inline">\(s\)</span> indexes location (in <strong>s</strong>pace), and <span class="math inline">\(t\)</span> indexes <strong>t</strong>ime. Because <span class="math inline">\(x\)</span> is not precisely determined and has nonzero error, we can consider it a random variable. The corresponding true value, of which <span class="math inline">\(x\)</span> is an estimate, is denoted <span class="math inline">\(x^*\)</span>. The error, <span class="math inline">\(\epsilon\)</span>, is defined as <span class="math inline">\(\epsilon = x - x^*\)</span>. Because <span class="math inline">\(\epsilon\)</span> is a transformation of a random variable, it is itself a random variable. We denote the mean, variance, and standard deviation of <span class="math inline">\(\epsilon\)</span> as <span class="math inline">\(\mu_\epsilon\)</span>, <span class="math inline">\(\sigma^2_\epsilon\)</span>, and <span class="math inline">\(\sigma_\epsilon\)</span>, respectively, and similarly for other random variables.</p>
-<p>The objective of this study is to validate the quantification of uncertainty, where uncertainty is expressed as an estimate of <span class="math inline">\(\sigma_x\)</span>. We denote this estimate <span class="math inline">\(\hat{\sigma}_x\)</span>, to distinguish it from the true value <span class="math inline">\(\sigma_x\)</span>. We perform this validation over a potentially large number of locations <span class="math inline">\(s\)</span> and times <span class="math inline">\(t\)</span> (although at present only a single time has been considered). The data for a given observed variable therefore consist of observations of <span class="math inline">\(x_{st}\)</span> and <span class="math inline">\(\hat{\sigma}_{st}\)</span>; these are both provided in the rivertile product produced by RiverObs.</p>
-<p>In order to validate the estimates <span class="math inline">\(\hat{\sigma}_{st}\)</span>, we rely on analogous gdem-derived synthetic data that give, for our purposes, “true” values <span class="math inline">\(x^*_{st}\)</span>. Thus we can calculate a corresponding set of empirical errors <span class="math inline">\(\epsilon_{st}\)</span> for every location and time in the dataset. Since <span class="math inline">\(\epsilon_{st} = x_{st} - x^*_{st}\)</span>, then if our uncertainty estimates are correct (<span class="math inline">\(\hat{\sigma}_{x_{st}} = \sigma_{x_{st}}\)</span>), we obtain <span class="math inline">\(\sigma_{\epsilon_{st}} = \sigma_{x_{st}}= \hat{\sigma}_{x_{st}}\)</span>. A simple elementwise scaling, <span class="math inline">\(e_{st} \equiv \epsilon_{st} / \hat{\sigma}_{x_{st}}\)</span> therefore has <span class="math inline">\(\sigma_{e_{st}} = 1\)</span> for all <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span>. (Recall that for any random variable <span class="math inline">\(Y\)</span> with mean <span class="math inline">\(\mu_Y\)</span> and variance <span class="math inline">\(\sigma^2_Y\)</span>, a linear transformation of the form <span class="math inline">\(W = aY + b\)</span> has mean <span class="math inline">\(\mu_W = a\mu_Y + b\)</span> and variance <span class="math inline">\(a^2\sigma_Y^2\)</span>. This is true regardless of distribution.)</p>
-<p>Thus scaled, the errors <span class="math inline">\(e_{st}\)</span> can be compared across locations and times in order to validate the uncertainty estimates. A “good” model for <span class="math inline">\(\sigma_x\)</span> will result in a set of <span class="math inline">\(e_{st}\)</span> with empirical standard deviation that is close to 1. This observation leads directly to explicit tests for verifying the model responsible for producing <span class="math inline">\(\hat{\sigma}_{x_{st}}\)</span>.</p>
-<div id="error-decomposition" class="section level3">
-<h3><span class="header-section-number">3.3.1</span> Error Decomposition</h3>
-<p>Uncertainty can be parsed into two components–bias and variance, corresponding to “systematic” and “random” errors. Strictly speaking, if <span class="math inline">\(\sigma_x\)</span> is defined to be a standard deviation (square root of variance), then it does not include bias, and therefore ignores a potentially large component of uncertainty. Adjusting <span class="math inline">\(\hat{\sigma}_x\)</span> cannot remove this bias, but it can account for it by “lumping it in” to the variance. This choice of whether or not to account for bias leads to two separate sets of uncertainty validation–with and without bias-adjusting the scaled errors. Since the uncertainty estimates are produced using a method that explicitly assumes zero bias, it makes sense to validate these estimates without including bias. On the other hand, real-world errors will include both random and systematic components, and a true assessment of uncertainty should somehow measure how well uncertainty estimates account for the full error distribution–including bias.</p>
-</div>
+<p>Consider an arbitrary measured variable (e.g. node height, reach width, pixel latitude), denoted <span class="math inline">\(y_{st}\)</span>, where <span class="math inline">\(s\)</span> indexes location (in <strong>s</strong>pace), and <span class="math inline">\(t\)</span> indexes <strong>t</strong>ime. Because <span class="math inline">\(y\)</span> is not precisely determined and has nonzero error, we can consider it a random variable. The corresponding true value, of which <span class="math inline">\(y\)</span> is an estimate, is denoted <span class="math inline">\(y^*\)</span>. The error, <span class="math inline">\(\epsilon\)</span>, is defined as <span class="math inline">\(\epsilon = y - y^*\)</span>. Because <span class="math inline">\(\epsilon\)</span> is a transformation of a random variable, it is itself a random variable. We denote the mean, variance, and standard deviation of <span class="math inline">\(\epsilon\)</span> as <span class="math inline">\(\mu_\epsilon\)</span>, <span class="math inline">\(\sigma^2_\epsilon\)</span>, and <span class="math inline">\(\sigma_\epsilon\)</span>, respectively, and similarly for other random variables.</p>
+<p>The objective of this study is to validate the quantification of uncertainty, where uncertainty is expressed as an estimate of <span class="math inline">\(\sigma_y\)</span>. We denote this estimate <span class="math inline">\(\hat{\sigma}_y\)</span>, to distinguish it from the true value <span class="math inline">\(\sigma_y\)</span>. We perform this validation over a potentially large number of locations <span class="math inline">\(s\)</span> and times <span class="math inline">\(t\)</span> (although at present only a single time has been considered). The data for a given observed variable therefore consist of observations of <span class="math inline">\(y_{st}\)</span> and <span class="math inline">\(\hat{\sigma}_{st}\)</span>; these are both provided in the rivertile product produced by RiverObs.</p>
+<p>In order to validate the estimates <span class="math inline">\(\hat{\sigma}_{st}\)</span>, we rely on analogous gdem-derived synthetic data that give “true” values <span class="math inline">\(y^*_{st}\)</span>. Thus we can calculate a corresponding set of empirical errors <span class="math inline">\(\epsilon_{st}\)</span> for every location and time in the dataset. Since <span class="math inline">\(\epsilon_{st} = y_{st} - y^*_{st}\)</span>, then if our uncertainty estimates are correct (<span class="math inline">\(\hat{\sigma}_{y_{st}} = \sigma_{y_{st}}\)</span>), we obtain <span class="math inline">\(\sigma_{\epsilon_{st}} = \sigma_{y_{st}}= \hat{\sigma}_{y_{st}}\)</span>. A simple elementwise scaling, <span class="math inline">\(e_{st} \equiv \epsilon_{st} / \hat{\sigma}_{y_{st}}\)</span> therefore has <span class="math inline">\(\sigma_{e_{st}} = 1\)</span> for all <span class="math inline">\(s\)</span> and <span class="math inline">\(t\)</span>. (Recall that for any random variable <span class="math inline">\(Y\)</span> with mean <span class="math inline">\(\mu_Y\)</span> and variance <span class="math inline">\(\sigma^2_Y\)</span>, a linear transformation of the form <span class="math inline">\(W = aY + b\)</span> has mean <span class="math inline">\(\mu_W = a\mu_Y + b\)</span> and variance <span class="math inline">\(a^2\sigma_Y^2\)</span>. This is true regardless of distribution.)</p>
+<p>Thus scaled, the errors <span class="math inline">\(e_{st}\)</span> can be compared across locations and times in order to validate the uncertainty estimates. A “good” model for <span class="math inline">\(\sigma_y\)</span> will result in a set of <span class="math inline">\(e_{st}\)</span> with empirical standard deviation that is close to 1. This observation leads directly to explicit tests for verifying the model responsible for producing <span class="math inline">\(\hat{\sigma}_{y_{st}}\)</span>.</p>
 <div id="assumptions-of-normality" class="section level3">
-<h3><span class="header-section-number">3.3.2</span> Assumptions of Normality</h3>
-<p>The uncertainty estimates <span class="math inline">\(\sigma_{x_{st}}\)</span> are provided without explicitly assuming a probability distribution for <span class="math inline">\(x\)</span> (or, equivalently, <span class="math inline">\(\epsilon\)</span>). However, explicit probabilistic tests for the truth of <span class="math inline">\(\sigma_{x}\)</span> are parametric, and rely on distributional assumptions, for example normality. The normality assumption is a reasonable one in the case of SWOT data, for at least two reasons. First, the feature-level measurements constitute aggregating (summing) over many independent radar “looks”, and as such will tend towards normality according to the central limit theorem. Second, the normal distribution has the property that it has the maximum <em>entropy</em>–colloquially, the maximum randomness–of any distribution for which all that is known is the mean and standard deviation. In SWOT data, that is the case: all that is reported is an estimate (<span class="math inline">\(x\)</span>) and a standard deviation (<span class="math inline">\(\sigma_x\)</span>). Thus, the normal distribution is a conservative choice; using any other distribution would unduly constrain the randomness it expresses.</p>
-</div>
-<div id="tests-for-validity-of-hatsigma_x" class="section level3">
-<h3><span class="header-section-number">3.3.3</span> Tests for validity of <span class="math inline">\(\hat{\sigma}_{x}\)</span></h3>
-<div id="visual-checks" class="section level4">
-<h4><span class="header-section-number">3.3.3.1</span> Visual Checks</h4>
-<p>The scaled errors, <span class="math inline">\(e_{st}\)</span>, are expected to have standard deviation equal to 1 for all locations <span class="math inline">\(s\)</span> and times <span class="math inline">\(t\)</span>. Therefore, a histogram of <span class="math inline">\(e_{st}\)</span> should display most scaled errors between -1 and 1, and with a peak at 0 (if errors are unbiased and symmetrical). Other distribution plots (e.g. box and violin plots) should reveal the same. The stronger assumption of normality can be visually inspected using a histogram with a standard normal pdf superimposed; this should roughly match the (appropriately scaled) bars of the histogram. A normal quantile-quantile (QQ) plot checks the normality assumption more explicitly, and makes clear which parts of the distribution most strongly diverge from normality.</p>
-<p>This rationale does not rule out selection of a more appropriate distribution based on empirical error distributions, rather the point is to justify the normal assumption a priori.</p>
-</div>
-<div id="qualitative-checks" class="section level4">
-<h4><span class="header-section-number">3.3.3.2</span> Qualitative checks</h4>
-<p>Descriptive statistics including the empirical standard deviation, RMSE, and percentiles of scaled errors can verify qualitatively the closeness of the observed to the theoretical error distribution. If the errors are unbiased and uncertainty estimates are correct, then both the RMSE and standard deviation should be approximately 1. Similarly, if we assume normally distributed errors then empirical quantiles should match theoretical–for example, the .025, .16, .5, .84, and .975 quantiles of <span class="math inline">\(e_{st}\)</span> should be approximately -1.96. -1, 0, 1, and 1.96, respectively. We do not expect these correspondences to be exact, only close enough to satisfy intuition.</p>
-</div>
-<div id="quantitative-hypothesis-test" class="section level4">
-<h4><span class="header-section-number">3.3.3.3</span> Quantitative Hypothesis Test</h4>
-<p>Assuming errors to be normally distributed, we can formulate an explicit hypothesis test for the following:</p>
-<ul>
-<li>Null hypothesis: <span class="math inline">\(\sigma_{e_{st}} = 1\)</span> for all <span class="math inline">\(s\)</span>, <span class="math inline">\(t\)</span>.</li>
-<li>Alternative hypothesis: <span class="math inline">\(\sigma_{e_{st}} \ne 1\)</span> for some <span class="math inline">\(s\)</span> and/or <span class="math inline">\(t\)</span>.</li>
-</ul>
-<p>Under the null hypothesis, a test statistic of the form <span class="math inline">\(\chi^2 \equiv \sum_{s,t}(e_{st} - \bar{e})^2\)</span> has a chi-square distribution with degrees of freedom equal to the total number of data in the validation set minus 1.</p>
-<p>Using a type-1 error rate of 0.05, the hypothesis test would reject the null hypothesis if the test statistic lies outside of the 0.025 - 0.975 quantile range of the chi-square distribution, and otherwise not reject the null hypothesis.</p>
-<p>The same test could be modified to include the assumption that errors are unbiased, by removing the subtraction of <span class="math inline">\(\bar{e}\)</span> from the definition of <span class="math inline">\(\chi^2\)</span> above.</p>
+<h3><span class="header-section-number">3.4.1</span> Assumptions of Normality</h3>
+<p>The uncertainty estimates <span class="math inline">\(\sigma_{y_{st}}\)</span> are provided without explicitly assuming a probability distribution for <span class="math inline">\(y\)</span> (or, equivalently, <span class="math inline">\(\epsilon\)</span>). However, explicit probabilistic tests for the truth of <span class="math inline">\(\sigma_{y}\)</span> are parametric, and rely on distributional assumptions, for example normality. The normality assumption is a reasonable one in the case of SWOT data, for at least two reasons. First, the feature-level measurements constitute aggregating (summing) over many independent radar “looks”, and as such will tend towards normality according to the central limit theorem. Second, the normal distribution has the property that it has the maximum <em>entropy</em>–colloquially, the maximum randomness–of any distribution for which all that is known is the mean and standard deviation. In SWOT data, that is the case: all that is reported is an estimate (<span class="math inline">\(y\)</span>) and a standard deviation (<span class="math inline">\(\sigma_y\)</span>). Thus, the normal distribution is a conservative choice; using any other distribution would unduly constrain the randomness it expresses.</p>
 
-</div>
 </div>
 </div>
 </div>
@@ -271,8 +327,9 @@ gitbook.start({
     script.type = "text/javascript";
     var src = "true";
     if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:" && /^https?:/.test(src))
-      src = src.replace(/^https?:/, '');
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();

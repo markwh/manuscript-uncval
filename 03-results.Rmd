@@ -1,113 +1,87 @@
+```{r}
+library(ggplot2)
+theme_set(theme_bw())
+```
+
+
 # Results
 
-The results are presented in 2 parts. Part 1 considers all validation data as a single set over which uncertainty estimates are evaluated. It seeks a simple yes/no answer to the question of whether predicted uncertainty matches empirical errors across the entire validation set. Phases 2 and separates results depending on variables such as uncertainty magnitude and feature size and seeks out relationships between these variables and error magnitude. 
+1. Height and slope (random component) errors are unbiased and well characterized by theoretical uncertainty model, following an approximate normal distribution. 
+  - Adding unmodeled sources of error (layover, reference DEM error) results in height errors with RMSE approximately 20% larger than predicted by the model
+2. Width errors are well characterized by the uncertainty model in the middle percentiles of their distribution, but exhibit heavy tails (especially upper tail) not accounted for by the model.
+  - Different aggregation methods (pixel to node) exacerbate the heavy-tail behavior of the errors. 
+  - At the reach scale this effect is exaggerated, resulting in errors with RMSE approximately 4.8 times larger than predicted by the model. 
+  - The heavy-tailed behavior is more pronounced at higher flow conditions, do to added complexity of the river boundaries (sloughs, etc.)
+3. Error behavior as a function of pixel count and cross-track distance is well characterized by the uncertainty model.
+4. Some of the worst errors (outliers) are likely artifacts due to higher spatial resolutions of truth data, but it is not clear how much of the heavy tail behavior is attributable to this. 
+
+
+
+How well do uncertainty models characterize empirical errrors from simulated SWOT data? The answer varies by the variable measured, the data product (node or reach), the simulation characteristics, and the particularities of aggregation. The validation results are presented here separately for different variables and data products. 
+
+
 
 
 ## Node Results
 
-Node variables validated include height, height2, width, and total area. The "height2" variable differs from "height" only in its uncertainty estimate (using a different method to estimate uncertainty).
+Scaled node-level errors varied in behavior across the different simulations and variables. Height error RMSE was generally less than 1.3 for the realistic simulations--with most of this coming from bias--and less than 1.1 for the idealized simulations--which had negligible bias. Scaled width errors were more variable, with RMSE as high as 5x the model-predicted RMSE in the simple aggregation, 2x the predicted RMSE using composite aggregation, and 1.5x the predicted RMSE using water-fraction aggregation. The simulation parameters--idealized versus realistic--had only a minor effect on width error statistics.
 
-The results in phase 1 are presented in 3 forms: Chi-square hypothesis tests of empirical variance, plots comparing theoretical to empirical distributions, and tables comparing theoretical to empirical statistics. Results at the node scale are presented in section ####; reach-scale results are presented in section ####. 
+```{r}
+load("robjs/nodesdplot.RData")
+nodesdplot
+```
 
-### Hypothesis tests
 
-In the combined validation data from all 3 passes, 2-sided chi-square hypothesis tests rejected the null hypothesis ($\sigma = \hat{\sigma}$) for all node variables at a significance level of 0.05. Even when errors were bias-adjusted the results of the hypothesis test are the same (Table ####). This indicates that empirical variance was significantly different from modeled variance. However, the hypothesis test for height was only marginally significant ($p = 0.035$ and $0.043$ for non-adjusted and bias-adjusted, respectively), whereas all other variables had highly significant hypothesis tests ($p < 10^{-6}$).
+Normal quantile-quantile (QQ) plots (Fig. ####) compare the emprical scaled errors to the theoretical $N(0, 1)$ distribution (solid black line) for "water fraction" aggregtion and idealized simulation parameters. This distinguishes characteristics of the empirical error distribution including bias (vertical offset from 1:1 line), standard deviation (slope of points), and departures from normality, for instance heavy tails. Based on Fig. ####, the uncertainty model for height adequately characterized uncertainty across all simulation dates and for all parts of the distribution, with approximately standard normal scaled errors. In contrast, scaled width errors exhibit heavy-tailed distributions, especially at the upper tail, corresponding to errors that are much higher than would be expected if the errors were normally distributed. Despite this behavior in the tails, the middle of the scaled width error distribution was more well-behaved, with small but non-negligible bias depending on the simulation date. 
+
+```{r}
+load("robjs/qqgg_nodes_frac_low.RData")
+qqgg_nodes_frac_low
+```
+
+In aggregate across all simulation days, distributions of scaled node height and width errors exhibit broadly the same characteristics as the same distributions for individual simulation days, but differ in severity by depending on the simulation parameters (Fig. ####). Width errors were closest in distribution to standard normal for the "water fraction" aggregation method, while using the composite method resulted in a heavier right-skew, and the simple mehtod had both a severely large upper tail as well as higher variance throughout the distribution (Fig. ####a). Height error distributions were unaffected by aggregation method, but adding simulation noise resulted in significant bias and slightly larger variance (Fig. ####b. 
+
+```{r}
+load("robjs/wseqq_compare.RData")
+load("robjs/widthqq_compare_all3.RData")
+
+widthqq_compare_all3
+wseqq_compare
+
+```
+
+
+### Factors affecting node-level errors and uncertainty
+
+Node-level height errors vary as a function of the number of pixels per node and the distance from the node to the ground-track of the satellite. These effects are not independent, since pixel size is larger closer to the ground track, resulting in fewer pixels for a given node area. A node with fewer pixels will have less ability to average out the independent noise per pixel, resulting in larger node-level errors. Pixel height errors also increase farther from the ground-track, as height becomes increasingly sensitive to changes in interferometric phase with increasing cross-track distance. These two phenomena--pixel size and height-phase sensitivity--result in a U-shaped relationship between estimated height uncertainty and cross-track distance (Fig. ####d). Both of these effects are well characterized in the height uncertainty model, resulting in scaled errors lying generally between -2 and 2, as expected given unit standard deviation.
+
+
+Width errors are also affected by pixel size, but are not otherwise affected by cross-track distance, resulting in the error and uncertainty profile shown in Fig. ####a-d. While the scaled width errors are not as well-behaved as the height errors and exceed 10 or 20 times the estimated $1\sigma$ uncertainty, they exhibit no discernable patterns when plotted against pixel count or cross-track distance, suggesting that these effects are adequately characterized by the uncertainty model. 
+
+```{r}
+load("robjs/wseerr_gg1.RData")
+wseerr_gg1
+```
+
+
 
 
 ```{r}
-load("robjs/node_ht.RData")
-kable(node_ht, format.args = list(scientific = -2))
+load("robjs/widtherr_gg1.RData")
+widtherr_gg1
 ```
 
-
-Restricting the validation to include only the lower-flow conditions (days 110 and 119) gives a different result for height; here the test does not reject the null hypthesis $\sigma = \hat{\sigma}$ at a significance level of 0.05 when bias is removed. All other variables have error variance that is again significantly different from the estimated variance. 
-
-```{r}
-load("robjs/node_htsset.RData")
-kable(node_htsset, format.args = list(scientific = -2))
-```
-
-
-### Distribution plots
-
-Histograms for node-level scaled errors (Fig. ####) illustrate the difference between the empirical (histogram) and theoretical (smooth curve) error distributions. Area and width (a nodewise constant scaling of area) have heavy upper tails, especially for the high-flow day 220, indicating a tendency to vastly overestimate node areas in some cases. Three of the worst overestimates (nodes 286, 301, and 360) are mapped below, and their aggregation of pixels compared to the validation truth in figure ####.
-
-```{r}
-load("robjs/histgg1.RData")
-histgg1
-```
-
-
-```{r, eval = FALSE}
-# Put node-area plots here
-```
-
-Normal quantile-quantile plots (Fig. ####) illustrate the deviation of emprical scaled errors from the theoretical $N(0, 1)$ distribution (solid black line). While the height errors closely match the theoretical distribution for day 109, day 220 slightly but consistently overestimates large height errors, enough to cause the hypothesis test to reject the equality of theoretical and empirical variance. Height2 scaled errors are apparently Gaussian (falling on a straight line in the QQ plot), but have a larger variance than is predicted (slope of a line through the scaled errors is greater than 1). Width and area scaled errors diverge considerably from the theoretical distribution, and the behavior is markedly different between days 109 and 220. Both days' scaled errors diverge from the theoretical $N(0,1)$ line, but whereas Day 220 has a heavy upper tail, day 109 appears to be Gaussian, but with a larger variance than predicted. 
-
-```{r}
-load("robjs/qqgg1.RData")
-qqgg1
-```
-
-```{r}
-load("robjs/scattergg1.RData")
-scattergg1
-```
-
-
-
-
-### Tables 
-
-Coverage rates for various confidence intervals (Table ####) again reflect the underestimation of variance in the uncertainty models. Only the 99% confidence interval for height contains the expected amount (99%) of the data; all other intervals contain less than the theoretical amount. 
-
-```{r}
-load("robjs/covdf.RData")
-kable(covdf, digits = 1)
-```
-
-Summary statistics (Table ####) indicate exactly by how much empirical statistics (bias, standard deviation, RMSE), differ from theoretical values (0, 1, and 1, respectively). Area and width $\hat{\sigma}$'s would need to be multiplied by a factor of 2.36 in order to match the theoretical variance (including bias), whereas $\hat{\sigma}$ for height and height2 would require smaller adjustments. 
-
-```{r}
-load("robjs/sumstatdf.RData")
-kable(sumstatdf, digits = 2)
-```
+### Worst offending nodes
 
 
 ## Reach results 
 
-```{r, eval = FALSE}
-load("robjs/reach_gg1.RData")
-reach_gg1
-```
-
 ```{r}
-load("robjs/reachht.RData")
-kable(reachht, digits = 2)
+load("robjs/scatter_reach_frac_low.RData")
+scatter_reach_frac_low
 ```
 
 
-
-## Part 2: Factors affecting errors and uncertainty
-
-- Uncertainty estimates are a function of variables including
-  - number of pixels/nodes
-  - position in cross-track
-  
-```{r}
-load("robjs/err_gg1.RData")
-err_gg1
-```
-
-```{r}
-load("robjs/unc_gg1.RData")
-unc_gg1
-```
-
-```{r}
-load("robjs/scalerr_gg1.RData")
-scalerr_gg1
-```
 
 
 

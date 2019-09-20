@@ -1,0 +1,6 @@
+# Discussion
+
+
+### Random-systematic error partitioning
+
+Uncertainty can be parsed into two components--bias and variance, corresponding to "systematic" and "random" errors. Strictly speaking, if $\sigma_x$ is defined to be a standard deviation (square root of variance), then it does not include bias, and therefore ignores a potentially large component of uncertainty. Adjusting $\hat{\sigma}_x$ cannot remove this bias, but it can account for it by "lumping it in" to the variance. This choice of whether or not to account for bias leads to two separate sets of uncertainty validation--with and without bias-adjusting the scaled errors. Since the uncertainty estimates are produced using a method that explicitly assumes zero bias, it makes sense to validate these estimates without including bias. On the other hand, real-world errors will include both random and systematic components, and a true assessment of uncertainty should somehow measure how well uncertainty estimates account for the full error distribution--including bias. 

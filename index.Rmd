@@ -5,10 +5,10 @@ date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book
-#bibliography: sources.bib
+bibliography: sources.bib
 biblio-style: apalike
 link-citations: yes
-github-repo: markwh/swot-error
+github-repo: markwh/manuscript-uncval
 description: "A synthesis of SWOT uncertainty model validation using simulations on the Sacramento River."
 ---
 
