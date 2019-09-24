@@ -56,14 +56,12 @@ wseqq_compare
 Node-level height errors vary as a function of the number of pixels per node and the distance from the node to the ground-track of the satellite. These effects are not independent, since pixel size is larger closer to the ground track, resulting in fewer pixels for a given node area. A node with fewer pixels will have less ability to average out the independent noise per pixel, resulting in larger node-level errors. Pixel height errors also increase farther from the ground-track, as height becomes increasingly sensitive to changes in interferometric phase with increasing cross-track distance. These two phenomena--pixel size and height-phase sensitivity--result in a U-shaped relationship between estimated height uncertainty and cross-track distance (Fig. ####d). Both of these effects are well characterized in the height uncertainty model, resulting in scaled errors lying generally between -2 and 2, as expected given unit standard deviation.
 
 
-Width errors are also affected by pixel size, but are not otherwise affected by cross-track distance, resulting in the error and uncertainty profile shown in Fig. ####a-d. While the scaled width errors are not as well-behaved as the height errors and exceed 10 or 20 times the estimated $1\sigma$ uncertainty, they exhibit no discernable patterns when plotted against pixel count or cross-track distance, suggesting that these effects are adequately characterized by the uncertainty model. 
+Width errors are also affected by pixel size, but are not otherwise affected by cross-track distance, resulting in the error and uncertainty profile shown in Fig. ####a-d. While the scaled width errors are not as well-behaved as the height errors and exceed 10 or 20 times the estimated $1\sigma$ uncertainty, they exhibit no discernable patterns when plotted against pixel count or cross-track distance, suggesting that these effects are well characterized by the uncertainty model. 
 
 ```{r}
 load("robjs/wseerr_gg1.RData")
 wseerr_gg1
 ```
-
-
 
 
 ```{r}
@@ -75,6 +73,8 @@ widtherr_gg1
 
 
 ## Reach results 
+
+Scaled reach-level errors for height and slope measurements (Fig. ####) were apparently unbiased and fell generally between -2 and 2 in the idealized simulations, in keeping with expectations. Corresponding width errors were again less well-behaved, reaching as much as 10 times the $1\sigma$ uncertainty estimate. Aggregation of width observations from node- to reach-level led to larger errors at the reach level, resulting from violations of underlying assumptions (zero bias, independence)
 
 ```{r}
 load("robjs/scatter_reach_frac_low.RData")

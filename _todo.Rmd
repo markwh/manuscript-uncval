@@ -12,6 +12,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 TODO:
 
-- rename "agg" legend and agg methods (composite, etc.) in widthqq_compare_all3 fig
+- ~~rename "agg" legend and agg methods (composite, etc.) in widthqq_compare_all3 fig~~
 - Make maps of bad nodes, showing pixels
+  - 361 is interesting, grabbing slough in some passes but not others
+  - 320 is good illustration of island/multichannel behavior
+  - 198-199 illustrate regularization--bad truth
+  
 - Add description, illustration of node flagging. 
+- ~~add high-noise case to reach results plot~~
