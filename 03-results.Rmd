@@ -20,8 +20,6 @@ theme_set(theme_bw())
 How well do uncertainty models characterize empirical errrors from simulated SWOT data? The answer varies by the variable measured, the data product (node or reach), the simulation characteristics, and the particularities of aggregation. The validation results are presented here separately for different variables and data products. 
 
 
-
-
 ## Node Results
 
 Scaled node-level errors varied in behavior across the different simulations and variables. Height error RMSE was generally less than 1.3 for the realistic simulations--with most of this coming from bias--and less than 1.1 for the idealized simulations--which had negligible bias. Scaled width errors were more variable, with RMSE as high as 5x the model-predicted RMSE in the simple aggregation, 2x the predicted RMSE using composite aggregation, and 1.5x the predicted RMSE using water-fraction aggregation. The simulation parameters--idealized versus realistic--had only a minor effect on width error statistics.
