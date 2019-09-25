@@ -75,8 +75,8 @@ widtherr_gg1
 Scaled reach-level errors for height and slope measurements (Fig. ####) were apparently unbiased and fell generally between -2 and 2 in the idealized simulations, in keeping with expectations. Corresponding width errors were again less well-behaved, reaching as much as 10 times the $1\sigma$ uncertainty estimate. Aggregation of width observations from node- to reach-level led to larger errors at the reach level, resulting from violations of underlying assumptions (zero bias, independence)
 
 ```{r}
-load("robjs/scatter_reach_frac_low.RData")
-scatter_reach_frac_low
+load("robjs/scatter_reach_final.RData")
+scatter_reach_final
 ```
 
 
