@@ -6,19 +6,7 @@ theme_set(theme_bw())
 
 # Results
 
-1. Height and slope (random component) errors are unbiased and well characterized by theoretical uncertainty model, following an approximate normal distribution. 
-  - Adding unmodeled sources of error (layover, reference DEM error) results in height errors with RMSE approximately 20% larger than predicted by the model
-2. Width errors are well characterized by the uncertainty model in the middle percentiles of their distribution, but exhibit heavy tails (especially upper tail) not accounted for by the model.
-  - Different aggregation methods (pixel to node) exacerbate the heavy-tail behavior of the errors. 
-  - At the reach scale this effect is exaggerated, resulting in errors with RMSE approximately 4.8 times larger than predicted by the model. 
-  - The heavy-tailed behavior is more pronounced at higher flow conditions, do to added complexity of the river boundaries (sloughs, etc.)
-3. Error behavior as a function of pixel count and cross-track distance is well characterized by the uncertainty model.
-4. Some of the worst errors (outliers) are likely artifacts due to higher spatial resolutions of truth data, but it is not clear how much of the heavy tail behavior is attributable to this. 
-
-
-
-How well do uncertainty models characterize empirical errrors from simulated SWOT data? The answer varies by the variable measured, the data product (node or reach), the simulation characteristics, and the particularities of aggregation. The validation results are presented here separately for different variables and data products. 
-
+How well do uncertainty models characterize empirical errrors from simulated SWOT data? The answer depends on the variable measured, the data product (node or reach), the simulation characteristics, and the particularities of aggregation. The validation results are presented here separately for different variables and data products.
 
 ## Node Results
 
@@ -54,7 +42,6 @@ wseqq_compare
 Node-level height errors vary as a function of the number of pixels per node and the distance from the node to the ground-track of the satellite. These effects are not independent, since pixel size is larger closer to the ground track, resulting in fewer pixels for a given node area. A node with fewer pixels will have less ability to average out the independent noise per pixel, resulting in larger node-level errors. Pixel height errors also increase farther from the ground-track, as height becomes increasingly sensitive to changes in interferometric phase with increasing cross-track distance. These two phenomena--pixel size and height-phase sensitivity--result in a U-shaped relationship between estimated height uncertainty and cross-track distance (Fig. ####d). Both of these effects are well characterized in the height uncertainty model, resulting in scaled errors lying generally between -2 and 2, as expected given unit standard deviation.
 
 
-Width errors are also affected by pixel size, but are not otherwise affected by cross-track distance, resulting in the error and uncertainty profile shown in Fig. ####a-d. While the scaled width errors are not as well-behaved as the height errors and exceed 10 or 20 times the estimated $1\sigma$ uncertainty, they exhibit no discernable patterns when plotted against pixel count or cross-track distance, suggesting that these effects are well characterized by the uncertainty model. 
 
 ```{r}
 load("robjs/wseerr_gg1.RData")
@@ -62,17 +49,23 @@ wseerr_gg1
 ```
 
 
+Width errors are also affected by pixel size, but are not otherwise affected by cross-track distance, resulting in the error and uncertainty profile shown in Fig. ####a-d. While the scaled width errors are not as well-behaved as the height errors and exceed 10 or 20 times the estimated $1\sigma$ uncertainty, they exhibit no discernable patterns when plotted against pixel count or cross-track distance, suggesting that these effects are well characterized by the uncertainty model. 
+
+
 ```{r}
 load("robjs/widtherr_gg1.RData")
 widtherr_gg1
 ```
 
-### Worst offending nodes
+### ILlustration of nodes with large errors
 
+TODO
 
 ## Reach results 
 
-Scaled reach-level errors for height and slope measurements (Fig. ####) were apparently unbiased and fell generally between -2 and 2 in the idealized simulations, in keeping with expectations. Corresponding width errors were again less well-behaved, reaching as much as 10 times the $1\sigma$ uncertainty estimate. Aggregation of width observations from node- to reach-level led to larger errors at the reach level, resulting from violations of underlying assumptions (zero bias, independence)
+Scaled reach-level errors for height and slope measurements (Fig. ####, top row) were apparently unbiased and fell generally between -2 and 2 in the idealized simulations, reflecting well-characterized uncertainties. As at the node level, corresponding width errors were less well-behaved, reaching as much as 10 times the $1\sigma$ uncertainty estimate. The magnitude of scaled width errors were larger on average than at the node scale, resulting from violations of underlying assumptions (zero bias, independence) when aggregating node to reach uncertainty.
+
+In the "realistic" simulations, introducing simulation noise primarily affected height errors--biasing many simulations' reach errors--but also had non-negligible effects on slope and width errors (Fig. ####, bottom row). Slope errors were larger in magnitude in some reaches--notably reaches 6 and 8. Width errors varied more sporadically, increasing or decreasing depending on the simulation day and reach. 
 
 ```{r}
 load("robjs/scatter_reach_final.RData")
