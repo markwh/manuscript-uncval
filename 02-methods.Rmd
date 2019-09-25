@@ -87,7 +87,7 @@ max(pixcvaldf$latitude)
 
 The study area consists of 734 nodes comprising 10 reaches in the Sacramento River between 38.92 and 39.75 degrees latitude (Figure ####). Simulated SWOT data products were produced using a hydrodynamic model of the river forced by historic observed flow conditions and observed bathymetry. The resulting spatially distributed water-surface elevations were used to produce a simulated single-look complex (SLC) data product using a SLC simulator producted by Jet Propulsion Laboratory. This simulator mimics various radar phenomena including ####. The simulated SLC products were processed using the SWOT processing chain to create the pixel, node, and reach river products. 
 
-```{r}
+```{r maps}
 library(ggplot2)
 theme_set(theme_bw())
 load("robjs/map_gg.RData")
@@ -132,13 +132,13 @@ run_tbl %>%
 ```
 
 
-```{r}
+```{r npx_xtk_gg}
 load("robjs/npx_xtk_gg.RData")
 npx_xtk_gg +
   xlim(0, 65000)
 ```
 
-```{r}
+```{r ecdf_gg}
 load("robjs/ecdf_gg.RData")
 ecdf_gg
 ```

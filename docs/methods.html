@@ -78,7 +78,7 @@
 <li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a><ul>
 <li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#node-results"><i class="fa fa-check"></i><b>4.1</b> Node Results</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="results.html"><a href="results.html#factors-affecting-node-level-errors-and-uncertainty"><i class="fa fa-check"></i><b>4.1.1</b> Factors affecting node-level errors and uncertainty</a></li>
-<li class="chapter" data-level="4.1.2" data-path="results.html"><a href="results.html#worst-offending-nodes"><i class="fa fa-check"></i><b>4.1.2</b> Worst offending nodes</a></li>
+<li class="chapter" data-level="4.1.2" data-path="results.html"><a href="results.html#illustration-of-nodes-with-large-errors"><i class="fa fa-check"></i><b>4.1.2</b> ILlustration of nodes with large errors</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#reach-results"><i class="fa fa-check"></i><b>4.2</b> Reach results</a></li>
 </ul></li>
@@ -167,11 +167,11 @@
 ## will replace the existing scale.</code></pre>
 <pre><code>## Warning: Removed 1 rows containing missing values (geom_rect).</code></pre>
 <pre><code>## Warning: Removed 24 rows containing missing values (geom_path).</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/maps-1.png" width="672" /></p>
 <pre><code>## Warning: Removed 137 rows containing missing values (geom_point).</code></pre>
 <pre><code>## Warning: Removed 3 rows containing missing values (geom_segment).</code></pre>
 <pre><code>## Warning: Removed 1 rows containing missing values (geom_text).</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-3-2.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-3-3.png" width="672" /></p>
+<p><img src="_main_files/figure-html/maps-2.png" width="672" /><img src="_main_files/figure-html/maps-3.png" width="672" /></p>
 <p>Validation of the simulated products requires a truth dataset; this was derived from a Global Digital Elevation Map (GDEM) model, produced from the ASTER NASA satellite. The GDEM was used to create a synthetic pixel cloud–in this case no SLC was produced–and processed to create truth data for nodes and reaches in the study area. ####</p>
 <p>Two sets of SWOT simulations were generated corresponding to more idealized and more realistic conceptions of land/water reflectance contrast and prior elevation information. The idealized case results in observation errors that arise from processes that are explicitly accounted for in the uncertainty estimation, whereas the realistic case includes potential un-modeled sources of error, namely phase unwrapping error and layover error. This isolation of modeled and unmodeled error sources allowed for explicit validation of uncertainty models’ representation of modeled phenomena as well as some indication of performance degradation due to unmodeled phenomena.</p>
 <p>Phase information from the radar interferometer must be “unwrapped” in order to properly map radar data onto geospatial coordinates, and this requires a reference model of water surface elevation. The idealized case uses the GDEM truth as a reference model, whereas the realistic case uses a coarser-resolution Shuttle Radar Topography Mission (SRTM) dataset for reference; SRTM will be used as the reference DEM for the operational SWOT mission. Layover errors arise when land maps onto the same phase-range coordinates as water, resulting in biased heights for the affected water features (pixels, nodes, reaches). Layover was effectively turned off in the idealized simulations by setting land reflectance to be low (-100dB), whereas the realistic case used a higher land reflectance (-5dB). Both cases used a water reflectance of 10dB, and other simulation parameters were held constant across the two cases.</p>
@@ -252,8 +252,8 @@
 </tr>
 </tbody>
 </table>
-<p><img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/npx_xtk_gg-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/ecdf_gg-1.png" width="672" /></p>
 </div>
 <div id="error-scaling" class="section level2">
 <h2><span class="header-section-number">3.4</span> Error scaling</h2>
