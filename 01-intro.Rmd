@@ -1,5 +1,14 @@
 # Introduction
 
+The Surface Water and Ocean Topography (SWOT, [@fu2012swot]) mission will make spaceborne measurements of the world's oceans, lakes, reservoirs, wetlands, and rivers once it is launched in 2021. River measurements will be aggregated to data products at multiple spatial scales to produce estimates of river height, with, spatial extent, surface slope, and discharge. 
+
+SWOT has the potential to provide a record of major rivers on an unprecedented global scale.  As this will be the first wide-swath radar altimetry satellite in orbit, extensive preliminary work is required to validate data collection and processing flows, ensuring that radar power and phase information translate into height, width, slope, and discharge. 
+
+- TODO: insert lit review of existing validation
+
+
+
+
 Opening
 
 - Introduce objectives of SWOT mission, river data products

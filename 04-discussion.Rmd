@@ -1,6 +1,19 @@
 # Discussion
 
 
+
+### Illustration of nodes with large errors
+
+While pixel-level data do not have a 1:1 correspondence between simulated and validation data and thus cannot be compared directly, visual juxtaposition of pixel data illustrative of phenomena that lead to large width errors. These phenomena include:
+
+1. Intricate channel geometry that cannot be resolved, either due to pixel size or regularization in slant plane (Fig. ####a)
+2. Sections of water that are contiguous in the PIXC slant plane but not in the validation slant plane, resulting in pixels for a given area of water being assigned to nodes in the PIXC that are not assigned to the node in the GDEM PIXC. (Fig. ####b)
+3. Stretches of river that are narrow in comparison to the pixel size, with an apparent positive bias in water fraction estimates for water-edge pixels. (Fig. ####c)
+
+All 3 of these phenomena are spatially correlated--nodes that experience them tend to occur in clusters. Thus the resulting errors at the reach scale are larger in magnitude, since node-to-reach uncertainty accumulation assumes that errors are spatially independent. 
+
+
+
 ### Random-systematic error partitioning
 
 Uncertainty can be parsed into two components--bias and variance, corresponding to "systematic" and "random" errors. Strictly speaking, if $\sigma_x$ is defined to be a standard deviation (square root of variance), then it does not include bias, and therefore ignores a potentially large component of uncertainty. Adjusting $\hat{\sigma}_x$ cannot remove this bias, but it can account for it by "lumping it in" to the variance. This choice of whether or not to account for bias leads to two separate sets of uncertainty validation--with and without bias-adjusting the scaled errors. Since the uncertainty estimates are produced using a method that explicitly assumes zero bias, it makes sense to validate these estimates without including bias. On the other hand, real-world errors will include both random and systematic components, and a true assessment of uncertainty should somehow measure how well uncertainty estimates account for the full error distribution--including bias. 

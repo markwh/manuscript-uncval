@@ -24,7 +24,7 @@
 <meta name="author" content="Mark Hagemann" />
 
 
-<meta name="date" content="2019-09-25" />
+<meta name="date" content="2019-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -78,12 +78,12 @@
 <li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a><ul>
 <li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#node-results"><i class="fa fa-check"></i><b>4.1</b> Node Results</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="results.html"><a href="results.html#factors-affecting-node-level-errors-and-uncertainty"><i class="fa fa-check"></i><b>4.1.1</b> Factors affecting node-level errors and uncertainty</a></li>
-<li class="chapter" data-level="4.1.2" data-path="results.html"><a href="results.html#illustration-of-nodes-with-large-errors"><i class="fa fa-check"></i><b>4.1.2</b> ILlustration of nodes with large errors</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#reach-results"><i class="fa fa-check"></i><b>4.2</b> Reach results</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>5</b> Discussion</a><ul>
-<li class="chapter" data-level="5.0.1" data-path="discussion.html"><a href="discussion.html#random-systematic-error-partitioning"><i class="fa fa-check"></i><b>5.0.1</b> Random-systematic error partitioning</a></li>
+<li class="chapter" data-level="5.0.1" data-path="discussion.html"><a href="discussion.html#illustration-of-nodes-with-large-errors"><i class="fa fa-check"></i><b>5.0.1</b> Illustration of nodes with large errors</a></li>
+<li class="chapter" data-level="5.0.2" data-path="discussion.html"><a href="discussion.html#random-systematic-error-partitioning"><i class="fa fa-check"></i><b>5.0.2</b> Random-systematic error partitioning</a></li>
 </ul></li>
 </ul>
 
@@ -106,7 +106,7 @@
 <h1><span class="header-section-number">3</span> Methods</h1>
 <div id="swot-satellite-overview-and-observation-characteristics" class="section level2">
 <h2><span class="header-section-number">3.1</span> SWOT satellite overview and observation characteristics</h2>
-<p>The SWOT satellite will orbit at #### km altitude, with an orbit period of ####. This combined with an azimuth angle of #### results in successive orbits having a spacing of #### at the equator. The on-board wide-swath Ka-band radar interferometer converts phase and range information into observations of water surface height and spatial extent. These observations are distributed over two swaths extending between roughly 10 km and 64 km perpendicular to the ground track of the satellite on either side of the track.</p>
+<p>The SWOT satellite will orbit at 890.6 km altitude, with an orbit period of 21 days. This combined with an inclination angle of 77.6° results in adjacent ground tracks having a spacing of 135 km at the equator <span class="citation">(Fu et al. <a href="#ref-fu2012swot" role="doc-biblioref">2012</a>)</span>. The on-board wide-swath Ka-band radar interferometer converts phase and range information into observations of water surface height and spatial extent. These observations are distributed over two swaths extending between roughly 10 km and 64 km perpendicular to the ground track of the satellite on either side of the track.</p>
 </div>
 <div id="swot-river-data-products" class="section level2">
 <h2><span class="header-section-number">3.2</span> SWOT River Data Products</h2>
@@ -267,6 +267,12 @@
 <p>The uncertainty estimates <span class="math inline">\(\sigma_{y_{st}}\)</span> are provided without explicitly assuming a probability distribution for <span class="math inline">\(y\)</span> (or, equivalently, <span class="math inline">\(\epsilon\)</span>). However, explicit probabilistic tests for the truth of <span class="math inline">\(\sigma_{y}\)</span> are parametric, and rely on distributional assumptions, for example normality. The normality assumption is a reasonable one in the case of SWOT data, for at least two reasons. First, the feature-level measurements constitute aggregating (summing) over many independent radar “looks”, and as such will tend towards normality according to the central limit theorem. Second, the normal distribution has the property that it has the maximum <em>entropy</em>–colloquially, the maximum randomness–of any distribution for which all that is known is the mean and standard deviation. In SWOT data, that is the case: all that is reported is an estimate (<span class="math inline">\(y\)</span>) and a standard deviation (<span class="math inline">\(\sigma_y\)</span>). Thus, the normal distribution is a conservative choice; using any other distribution would unduly constrain the randomness it expresses.</p>
 
 </div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-fu2012swot">
+<p>Fu, Lee-Lueng, Douglas Alsdorf, Rosemary Morrow, Ernesto Rodriguez, and Nelly Mognard. 2012. “SWOT: The Surface Water and Ocean Topography Mission: Wide-Swath Altimetric Elevation on Earth.” Pasadena, CA: Jet Propulsion Laboratory, National Aeronautics; Space ….</p>
 </div>
 </div>
             </section>

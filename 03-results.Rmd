@@ -14,7 +14,9 @@ Scaled node-level errors varied in behavior across the different simulations and
 
 ```{r}
 load("robjs/nodesdplot.RData")
+load("robjs/nodesdplot_raw.RData")
 nodesdplot
+nodesdplot_raw
 ```
 
 
@@ -57,9 +59,6 @@ load("robjs/widtherr_gg1.RData")
 widtherr_gg1
 ```
 
-### ILlustration of nodes with large errors
-
-TODO
 
 ## Reach results 
 
@@ -71,8 +70,5 @@ In the "realistic" simulations, introducing simulation noise primarily affected 
 load("robjs/scatter_reach_final.RData")
 scatter_reach_final
 ```
-
-
-
 
 

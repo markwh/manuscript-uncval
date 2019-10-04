@@ -24,7 +24,7 @@
 <meta name="author" content="Mark Hagemann" />
 
 
-<meta name="date" content="2019-09-25" />
+<meta name="date" content="2019-10-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -78,12 +78,12 @@
 <li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a><ul>
 <li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#node-results"><i class="fa fa-check"></i><b>4.1</b> Node Results</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="results.html"><a href="results.html#factors-affecting-node-level-errors-and-uncertainty"><i class="fa fa-check"></i><b>4.1.1</b> Factors affecting node-level errors and uncertainty</a></li>
-<li class="chapter" data-level="4.1.2" data-path="results.html"><a href="results.html#worst-offending-nodes"><i class="fa fa-check"></i><b>4.1.2</b> Worst offending nodes</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#reach-results"><i class="fa fa-check"></i><b>4.2</b> Reach results</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>5</b> Discussion</a><ul>
-<li class="chapter" data-level="5.0.1" data-path="discussion.html"><a href="discussion.html#random-systematic-error-partitioning"><i class="fa fa-check"></i><b>5.0.1</b> Random-systematic error partitioning</a></li>
+<li class="chapter" data-level="5.0.1" data-path="discussion.html"><a href="discussion.html#illustration-of-nodes-with-large-errors"><i class="fa fa-check"></i><b>5.0.1</b> Illustration of nodes with large errors</a></li>
+<li class="chapter" data-level="5.0.2" data-path="discussion.html"><a href="discussion.html#random-systematic-error-partitioning"><i class="fa fa-check"></i><b>5.0.2</b> Random-systematic error partitioning</a></li>
 </ul></li>
 </ul>
 
@@ -104,6 +104,11 @@
             <section class="normal" id="section-">
 <div id="introduction" class="section level1">
 <h1><span class="header-section-number">2</span> Introduction</h1>
+<p>The Surface Water and Ocean Topography (SWOT, <span class="citation">(Fu et al. <a href="#ref-fu2012swot" role="doc-biblioref">2012</a>)</span>) mission will make spaceborne measurements of the world’s oceans, lakes, reservoirs, wetlands, and rivers once it is launched in 2021. River measurements will be aggregated to data products at multiple spatial scales to produce estimates of river height, with, spatial extent, surface slope, and discharge.</p>
+<p>SWOT has the potential to provide a record of major rivers on an unprecedented global scale. As this will be the first wide-swath radar altimetry satellite in orbit, extensive preliminary work is required to validate data collection and processing flows, ensuring that radar power and phase information translate into height, width, slope, and discharge.</p>
+<ul>
+<li>TODO: insert lit review of existing validation</li>
+</ul>
 <p>Opening</p>
 <ul>
 <li>Introduce objectives of SWOT mission, river data products</li>
@@ -118,6 +123,12 @@
 <p>In order to be useful for refining uncertainty estimates, a validation of uncertainty models should be predictive of error magnitude using only a set of SWOT-observable or a-priori variables and applicable to cases outside of those used in the validation study.</p>
 <p>In this study we present a validation of SWOT measurement uncertainty at the river node and reach scales. The products of this validation are threefold. First, we quantify the degree to which empirical distributions of measurement errors match modeled uncertainty across all validation data. Second, we describe and quantify discrepancies between empirical and theoretical error magnitude as a function of several characteristics including number of pixels/nodes, viewing geometry, and layover characteristics. Finally, we develop, calibrate, and validate a model for refining a priori uncertainty estimates using only information available from SWOT and a priori measurements. For the purposes of validation “truth” we employ simulated SWOT observations from several intensively modeled rivers spanning a range of hydraulic regimes, flow geometry, and catchment topography. We conclude with a prognosis for scaling up this validation as more data–simulated and real–become available. We envision this validation framework–particularly the model–being deployed as an additional postprocessing layer used to empirically scale uncertainty estimates within the SWOT river data products.</p>
 
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-fu2012swot">
+<p>Fu, Lee-Lueng, Douglas Alsdorf, Rosemary Morrow, Ernesto Rodriguez, and Nelly Mognard. 2012. “SWOT: The Surface Water and Ocean Topography Mission: Wide-Swath Altimetric Elevation on Earth.” Jet Propulsion Laboratory, California Institute of Technology; NASA.</p>
+</div>
 </div>
             </section>
 

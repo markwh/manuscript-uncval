@@ -2,7 +2,7 @@
 
 ## SWOT satellite overview and observation characteristics
 
-The SWOT satellite will orbit at #### km altitude, with an orbit period of ####. This combined with an azimuth angle of #### results in successive orbits having a spacing of #### at the equator. The on-board wide-swath Ka-band radar interferometer converts phase and range information into observations of water surface height and spatial extent. These observations are distributed over two swaths extending between roughly 10 km and 64 km perpendicular to the ground track of the satellite on either side of the track. 
+The SWOT satellite will orbit at 890.6 km altitude, with an orbit period of 21 days. This combined with an inclination angle of 77.6&deg; results in adjacent ground tracks having a spacing of 135 km at the equator [@fu2012swot]. The on-board wide-swath Ka-band radar interferometer converts phase and range information into observations of water surface height and spatial extent. These observations are distributed over two swaths extending between roughly 10 km and 64 km perpendicular to the ground track of the satellite on either side of the track. 
 
 ## SWOT River Data Products
 

@@ -20,3 +20,4 @@ TODO:
   
 - Add description, illustration of node flagging. 
 - ~~add high-noise case to reach results plot~~
+- rename code chunks in manuscript files
