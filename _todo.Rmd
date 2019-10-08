@@ -12,12 +12,17 @@ knitr::opts_chunk$set(echo = TRUE)
 
 TODO:
 
-- ~~rename "agg" legend and agg methods (composite, etc.) in widthqq_compare_all3 fig~~
 - Make maps of bad nodes, showing pixels
   - 361 is interesting, grabbing slough in some passes but not others
   - 320 is good illustration of island/multichannel behavior
   - 198-199 illustrate regularization--bad truth
   
 - Add description, illustration of node flagging. 
-- ~~add high-noise case to reach results plot~~
 - rename code chunks in manuscript files
+- Correct the reach height, slope uncertainty to account for weights
+- Finalize map figure in photoshop or similar
+- Discussion section about Sacramento being especially prone to layover error. 
+- replace all mention of days with month/day or month-day format
+- Move references to the end of the book.
+- Replace noise = (high, low) with simulation = (realistic, idealized) in WSE QQ plot
+
