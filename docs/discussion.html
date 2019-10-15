@@ -24,7 +24,7 @@
 <meta name="author" content="Mark Hagemann" />
 
 
-<meta name="date" content="2019-10-01" />
+<meta name="date" content="2019-10-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -71,9 +71,7 @@
 <li class="chapter" data-level="3.2.2" data-path="methods.html"><a href="methods.html#reach-level-product"><i class="fa fa-check"></i><b>3.2.2</b> Reach-level product</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="methods.html"><a href="methods.html#simulated-datasets"><i class="fa fa-check"></i><b>3.3</b> Simulated Datasets</a></li>
-<li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#error-scaling"><i class="fa fa-check"></i><b>3.4</b> Error scaling</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="methods.html"><a href="methods.html#assumptions-of-normality"><i class="fa fa-check"></i><b>3.4.1</b> Assumptions of Normality</a></li>
-</ul></li>
+<li class="chapter" data-level="3.4" data-path="methods.html"><a href="methods.html#error-scaling"><i class="fa fa-check"></i><b>3.4</b> Error scaling</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="results.html"><a href="results.html"><i class="fa fa-check"></i><b>4</b> Results</a><ul>
 <li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#node-results"><i class="fa fa-check"></i><b>4.1</b> Node Results</a><ul>
@@ -84,6 +82,7 @@
 <li class="chapter" data-level="5" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>5</b> Discussion</a><ul>
 <li class="chapter" data-level="5.0.1" data-path="discussion.html"><a href="discussion.html#illustration-of-nodes-with-large-errors"><i class="fa fa-check"></i><b>5.0.1</b> Illustration of nodes with large errors</a></li>
 <li class="chapter" data-level="5.0.2" data-path="discussion.html"><a href="discussion.html#random-systematic-error-partitioning"><i class="fa fa-check"></i><b>5.0.2</b> Random-systematic error partitioning</a></li>
+<li class="chapter" data-level="5.0.3" data-path="discussion.html"><a href="discussion.html#particularities-of-sacramento-river"><i class="fa fa-check"></i><b>5.0.3</b> Particularities of Sacramento River</a></li>
 </ul></li>
 </ul>
 
@@ -108,7 +107,7 @@
 <h3><span class="header-section-number">5.0.1</span> Illustration of nodes with large errors</h3>
 <p>While pixel-level data do not have a 1:1 correspondence between simulated and validation data and thus cannot be compared directly, visual juxtaposition of pixel data illustrative of phenomena that lead to large width errors. These phenomena include:</p>
 <ol style="list-style-type: decimal">
-<li>Intricate channel geometry that cannot be resolved, either due to pixel size or regularization in slant plane (Fig. ####a)</li>
+<li>Complex channel geometry that cannot be resolved, either due to pixel size or regularization in slant plane (Fig. ####a)</li>
 <li>Sections of water that are contiguous in the PIXC slant plane but not in the validation slant plane, resulting in pixels for a given area of water being assigned to nodes in the PIXC that are not assigned to the node in the GDEM PIXC. (Fig. ####b)</li>
 <li>Stretches of river that are narrow in comparison to the pixel size, with an apparent positive bias in water fraction estimates for water-edge pixels. (Fig. ####c)</li>
 </ol>
@@ -116,11 +115,21 @@
 </div>
 <div id="random-systematic-error-partitioning" class="section level3">
 <h3><span class="header-section-number">5.0.2</span> Random-systematic error partitioning</h3>
-<p>Uncertainty can be parsed into two components–bias and variance, corresponding to “systematic” and “random” errors. Strictly speaking, if <span class="math inline">\(\sigma_x\)</span> is defined to be a standard deviation (square root of variance), then it does not include bias, and therefore ignores a potentially large component of uncertainty. Adjusting <span class="math inline">\(\hat{\sigma}_x\)</span> cannot remove this bias, but it can account for it by “lumping it in” to the variance. This choice of whether or not to account for bias leads to two separate sets of uncertainty validation–with and without bias-adjusting the scaled errors. Since the uncertainty estimates are produced using a method that explicitly assumes zero bias, it makes sense to validate these estimates without including bias. On the other hand, real-world errors will include both random and systematic components, and a true assessment of uncertainty should somehow measure how well uncertainty estimates account for the full error distribution–including bias.</p>
+<p>Uncertainty can be parsed into two components–bias and variance, corresponding to “systematic” and “random” errors. Strictly speaking, if <span class="math inline">\(\sigma_y\)</span> is defined to be a standard deviation (square root of variance), then it does not include bias, and therefore ignores a potentially large component of uncertainty. Adjusting <span class="math inline">\(\hat{\sigma}_y\)</span> cannot remove this bias, but it can account for it by “lumping it in” to the variance. This choice of whether or not to account for bias leads to two separate sets of uncertainty validation–with and without bias-adjusting the scaled errors. Since the uncertainty estimates are produced using a method that explicitly assumes zero bias, it makes sense to validate these estimates without including bias. On the other hand, real-world errors will include both random and systematic components, and a true assessment of uncertainty should somehow measure how well uncertainty estimates account for the full error distribution–including bias.</p>
+</div>
+<div id="particularities-of-sacramento-river" class="section level3">
+<h3><span class="header-section-number">5.0.3</span> Particularities of Sacramento River</h3>
+<ul>
+<li>orientation relative to ground track</li>
+<li>width</li>
+</ul>
 
 <div id="refs" class="references">
 <div>
-<p>Fu, Lee-Lueng, Douglas Alsdorf, Rosemary Morrow, Ernesto Rodriguez, and Nelly Mognard. 2012. “SWOT: The Surface Water and Ocean Topography Mission: Wide-Swath Altimetric Elevation on Earth.” Pasadena, CA: Jet Propulsion Laboratory, National Aeronautics; Space ….</p>
+<p>Andreadis, Konstantinos M. 2018. “Data Assimilation and River Hydrodynamic Modeling over Large Scales.” In <em>Global Flood Hazard: Applications in Modeling, Mapping, and Forecasting</em>, 229–37. John Wiley &amp; Sons.</p>
+</div>
+<div>
+<p>Fu, Lee-Lueng, Douglas Alsdorf, Rosemary Morrow, Ernesto Rodriguez, and Nelly Mognard. 2012. “SWOT: The Surface Water and Ocean Topography Mission: Wide-Swath Altimetric Elevation on Earth.” Jet Propulsion Laboratory, California Institute of Technology; NASA.</p>
 </div>
 </div>
 </div>
