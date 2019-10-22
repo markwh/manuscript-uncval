@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Uncertainty Validation</title>
   <meta name="description" content="A synthesis of SWOT uncertainty model validation using simulations on the Sacramento River." />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Uncertainty Validation" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Mark Hagemann" />
 
 
-<meta name="date" content="2019-10-15" />
+<meta name="date" content="2019-10-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -77,12 +80,13 @@
 <li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#node-results"><i class="fa fa-check"></i><b>4.1</b> Node Results</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="results.html"><a href="results.html#factors-affecting-node-level-errors-and-uncertainty"><i class="fa fa-check"></i><b>4.1.1</b> Factors affecting node-level errors and uncertainty</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#reach-results"><i class="fa fa-check"></i><b>4.2</b> Reach results</a></li>
+<li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#reach-results"><i class="fa fa-check"></i><b>4.2</b> Reach results</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="results.html"><a href="results.html#illustration-of-nodes-with-large-errors"><i class="fa fa-check"></i><b>4.2.1</b> Illustration of nodes with large errors</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>5</b> Discussion</a><ul>
-<li class="chapter" data-level="5.0.1" data-path="discussion.html"><a href="discussion.html#illustration-of-nodes-with-large-errors"><i class="fa fa-check"></i><b>5.0.1</b> Illustration of nodes with large errors</a></li>
-<li class="chapter" data-level="5.0.2" data-path="discussion.html"><a href="discussion.html#random-systematic-error-partitioning"><i class="fa fa-check"></i><b>5.0.2</b> Random-systematic error partitioning</a></li>
-<li class="chapter" data-level="5.0.3" data-path="discussion.html"><a href="discussion.html#particularities-of-sacramento-river"><i class="fa fa-check"></i><b>5.0.3</b> Particularities of Sacramento River</a></li>
+<li class="chapter" data-level="5.0.1" data-path="discussion.html"><a href="discussion.html#random-systematic-error-partitioning"><i class="fa fa-check"></i><b>5.0.1</b> Random-systematic error partitioning</a></li>
+<li class="chapter" data-level="5.0.2" data-path="discussion.html"><a href="discussion.html#particularities-of-sacramento-river"><i class="fa fa-check"></i><b>5.0.2</b> Particularities of Sacramento River</a></li>
 </ul></li>
 </ul>
 
@@ -104,7 +108,7 @@
 <div id="header">
 <h1 class="title">Uncertainty Validation</h1>
 <p class="author"><em>Mark Hagemann</em></p>
-<p class="date"><em>2019-10-15</em></p>
+<p class="date"><em>2019-10-22</em></p>
 </div>
 <div id="abstract" class="section level1">
 <h1><span class="header-section-number">1</span> Abstract</h1>
@@ -121,11 +125,13 @@
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({

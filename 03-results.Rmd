@@ -12,7 +12,7 @@ How well do uncertainty models characterize empirical errrors from simulated SWO
 
 Scaled node-level errors varied in behavior across the different simulations and variables. Height error RMSE was generally less than 1.3 for the realistic simulations--with most of this coming from bias--and less than 1.1 for the idealized simulations--which had negligible bias. Scaled width errors were more variable, with RMSE as high as 5x the model-predicted RMSE in the simple aggregation, 2x the predicted RMSE using composite aggregation, and 1.5x the predicted RMSE using water-fraction aggregation. The simulation parameters--idealized versus realistic--had only a minor effect on width error statistics.
 
-```{r}
+```{r nodesdplot}
 load("robjs/nodesdplot.RData")
 load("robjs/nodesdplot_raw.RData")
 nodesdplot
@@ -22,14 +22,14 @@ nodesdplot_raw
 
 Normal quantile-quantile (QQ) plots (Fig. ####) compare the emprical scaled errors to the theoretical $N(0, 1)$ distribution (solid black line) for "water fraction" aggregtion and idealized simulation parameters. This distinguishes characteristics of the empirical error distribution including bias (vertical offset from 1:1 line), standard deviation (slope of points), and departures from normality, for instance heavy tails. Based on Fig. ####, the uncertainty model for height adequately characterized uncertainty across all simulation dates and for all parts of the distribution, with approximately standard normal scaled errors. In contrast, scaled width errors exhibit heavy-tailed distributions, especially at the upper tail, corresponding to errors that are much higher than would be expected if the errors were normally distributed. Despite this behavior in the tails, the middle of the scaled width error distribution was more well-behaved, with small but non-negligible bias depending on the simulation date. 
 
-```{r}
+```{r qqplot_byday}
 load("robjs/qqgg_nodes_frac_low.RData")
 qqgg_nodes_frac_low
 ```
 
 In aggregate across all simulation days, distributions of scaled node height and width errors exhibit broadly the same characteristics as the same distributions for individual simulation days, but differ in severity by depending on the simulation parameters (Fig. ####). Width errors were closest in distribution to standard normal for the "water fraction" aggregation method, while using the composite method resulted in a heavier right-skew, and the simple mehtod had both a severely large upper tail as well as higher variance throughout the distribution (Fig. ####a). Height error distributions were unaffected by aggregation method, but adding simulation noise resulted in significant bias and slightly larger variance (Fig. ####b. 
 
-```{r}
+```{r qqplot_bycondition}
 load("robjs/wseqq_compare.RData")
 load("robjs/widthqq_compare_all3.RData")
 
@@ -45,7 +45,7 @@ Node-level height errors vary as a function of the number of pixels per node and
 
 
 
-```{r}
+```{r wse_scatter}
 load("robjs/wseerr_gg1.RData")
 wseerr_gg1
 ```
@@ -54,7 +54,7 @@ wseerr_gg1
 Width errors are also affected by pixel size, but are not otherwise affected by cross-track distance, resulting in the error and uncertainty profile shown in Fig. ####a-d. While the scaled width errors are not as well-behaved as the height errors and exceed 10 or 20 times the estimated $1\sigma$ uncertainty, they exhibit no discernable patterns when plotted against pixel count or cross-track distance, suggesting that these effects are well characterized by the uncertainty model. 
 
 
-```{r}
+```{r width_scatter}
 load("robjs/widtherr_gg1.RData")
 widtherr_gg1
 ```
@@ -66,9 +66,27 @@ Scaled reach-level errors for height and slope measurements (Fig. ####, top row)
 
 In the "realistic" simulations, introducing simulation noise primarily affected height errors--biasing many simulations' reach errors--but also had non-negligible effects on slope and width errors (Fig. ####, bottom row). Slope errors were larger in magnitude in some reaches--notably reaches 6 and 8. Width errors varied more sporadically, increasing or decreasing depending on the simulation day and reach. 
 
-```{r}
+```{r reach_scatter}
 load("robjs/scatter_reach_final.RData")
 scatter_reach_final
 ```
+
+
+
+### Illustration of nodes with large errors
+
+While pixel-level data do not have a 1:1 correspondence between simulated and validation data and thus cannot be compared directly, visual juxtaposition of pixel data illustrative of phenomena that lead to large width errors. These phenomena include:
+
+1. Complex channel geometry that cannot be resolved, either due to pixel size or regularization in slant plane (Fig. ####a)
+2. Sections of water that are contiguous in the PIXC slant plane but not in the validation slant plane, resulting in pixels for a given area of water being assigned to nodes in the PIXC that are not assigned to the node in the GDEM PIXC. (Fig. ####b)
+3. Stretches of river that are narrow in comparison to the pixel size, with an apparent positive bias in water fraction estimates for water-edge pixels. (Fig. ####c)
+
+All 3 of these phenomena are spatially correlated--nodes that experience them tend to occur in clusters. Thus the resulting errors at the reach scale are larger in magnitude, since node-to-reach uncertainty accumulation assumes that errors are spatially independent. 
+
+```{r pix_maps}
+load("robjs/pixmapgg.RData")
+pixmapgg
+```
+
 
 

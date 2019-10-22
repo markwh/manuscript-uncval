@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>2 Introduction | Uncertainty Validation</title>
   <meta name="description" content="A synthesis of SWOT uncertainty model validation using simulations on the Sacramento River." />
-  <meta name="generator" content="bookdown 0.13 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.14 and GitBook 2.6.7" />
 
   <meta property="og:title" content="2 Introduction | Uncertainty Validation" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Mark Hagemann" />
 
 
-<meta name="date" content="2019-10-15" />
+<meta name="date" content="2019-10-22" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -77,12 +80,13 @@
 <li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#node-results"><i class="fa fa-check"></i><b>4.1</b> Node Results</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="results.html"><a href="results.html#factors-affecting-node-level-errors-and-uncertainty"><i class="fa fa-check"></i><b>4.1.1</b> Factors affecting node-level errors and uncertainty</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#reach-results"><i class="fa fa-check"></i><b>4.2</b> Reach results</a></li>
+<li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#reach-results"><i class="fa fa-check"></i><b>4.2</b> Reach results</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="results.html"><a href="results.html#illustration-of-nodes-with-large-errors"><i class="fa fa-check"></i><b>4.2.1</b> Illustration of nodes with large errors</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>5</b> Discussion</a><ul>
-<li class="chapter" data-level="5.0.1" data-path="discussion.html"><a href="discussion.html#illustration-of-nodes-with-large-errors"><i class="fa fa-check"></i><b>5.0.1</b> Illustration of nodes with large errors</a></li>
-<li class="chapter" data-level="5.0.2" data-path="discussion.html"><a href="discussion.html#random-systematic-error-partitioning"><i class="fa fa-check"></i><b>5.0.2</b> Random-systematic error partitioning</a></li>
-<li class="chapter" data-level="5.0.3" data-path="discussion.html"><a href="discussion.html#particularities-of-sacramento-river"><i class="fa fa-check"></i><b>5.0.3</b> Particularities of Sacramento River</a></li>
+<li class="chapter" data-level="5.0.1" data-path="discussion.html"><a href="discussion.html#random-systematic-error-partitioning"><i class="fa fa-check"></i><b>5.0.1</b> Random-systematic error partitioning</a></li>
+<li class="chapter" data-level="5.0.2" data-path="discussion.html"><a href="discussion.html#particularities-of-sacramento-river"><i class="fa fa-check"></i><b>5.0.2</b> Particularities of Sacramento River</a></li>
 </ul></li>
 </ul>
 
@@ -103,45 +107,30 @@
             <section class="normal" id="section-">
 <div id="introduction" class="section level1">
 <h1><span class="header-section-number">2</span> Introduction</h1>
-<p>The Surface Water and Ocean Topography (SWOT, <span class="citation">(Fu et al. <a href="#ref-fu2012swot" role="doc-biblioref">2012</a>)</span>) mission will join the fleet of earth observation satellites upon its launch in 2021. Thereafter it will begin its mission of monitoring the world’s oceans, lakes, reservoirs, wetlands, and rivers, providing some #### GB per day of information to the scientific community. This flow of data will be the first of its kind, involving instrumentation and data processing pipelines never before deployed. The termini of these data streams will be a variety of data products whose veracity and reliability are essential to the pursuit and application of hydrologic science.</p>
-<p>The hydrology (<strong>S</strong>urface <strong>W</strong>ater) data measured by SWOT–including width, slope, and elevation relative to geoid on rivers whose average width is over 100m. This information will become publically accessible datasets with expected applications including discharge estimation in ungaged basins <span class="citation">(Durand et al. <a href="#ref-durand2016" role="doc-biblioref">2016</a>; Gleason, Garambois, and Durand <a href="#ref-gleason2017" role="doc-biblioref">2017</a>)</span>, data assimilation with hydraulic models <span class="citation">(Andreadis <a href="#ref-andreadis2018" role="doc-biblioref">2018</a>; Oubanas et al. <a href="#ref-oubanas2018" role="doc-biblioref">2018</a>)</span>, ####</p>
-<p>River measurements will be aggregated to data products at multiple spatial scales to produce estimates of river height, with, spatial extent, surface slope, and discharge. Because these measurements are often combined probabilistically with other data sources–e.g. prior distributions in Bayesian discharge estimation <span class="citation">(Durand et al. <a href="#ref-durand2014" role="doc-biblioref">2014</a>; <span class="citeproc-not-found" data-reference-id="hagemann2017"><strong>???</strong></span>)</span>, or hydrodynamic models in data assimilation <span class="citation">(Andreadis <a href="#ref-andreadis2018" role="doc-biblioref">2018</a>; Oubanas et al. <a href="#ref-oubanas2018" role="doc-biblioref">2018</a>)</span>–SWOT data products will contain uncertainty estimates associated with measured variables. The measurements and the associated uncertainty estimates are derived from physics-based equations that relate the quantities of interest to known and directly measured quantities including satellite position, radar range, power, and interferometric phase.</p>
-<p>Validation of SWOT data products and underlying processing pipelines is an ongoing effort, the culmination of which will come only after the satellite is in orbit. The first 3 months of the SWOT mission will be devoted to instrument calibration and processing validation (cal/val), employing a fast-sampling orbit wherein the orbit time for selected cal/val sites will be ~1 day <span class="citation">(?? <a href="#ref-swot2018calval" role="doc-biblioref">2018</a>)</span>. This sampling will coincide with field surveys generating in-situ comparison datasets. In order to benchmark instrument performance prior to launch, an airborne instrument, termed AirSWOT, was developed to produce data analogous to the SWOT satellite <span class="citation">(Altenau et al. <a href="#ref-altenau2017" role="doc-biblioref">2017</a>; Tuozzolo et al. <a href="#ref-tuozzolo2019" role="doc-biblioref">2019</a>; Pitcher et al. <a href="#ref-pitcher2019" role="doc-biblioref">2019</a>)</span>. While this effort was successful in demonstrating the ability for SWOT to measure slope and water surface elevation, the many differences between the airborne and spaceborne missions (e.g. look angle, swath size) preclude this data from being used to validate of uncertainty models, which to date remain largely unverified.</p>
-<p>Meanwhile, verification of data processing flows has been proceeding using simulated data products generated from modeled terrain, hydrology, satellite trajectory, and radar physics. The most recent generation of simulations include estimates of uncertainty accompanying simulated measurements.</p>
-<p>In this study, we use simulated data products to validate river measurements against synthetic truth data in order to assess how well empirical (albeit simulated) errors comport with model-encoded expectations. Our purpose is not to investigate measurement errors directly–that is, how measured values differ from truth–but instead to determine how these errors behave vis a vis the measurements’ accompanying uncertainty estimates. Thus instead of questioning how errors behave across a range of validation characteristics, we seek to answer how the behavior of errors <em>relative to estimated uncertainty</em> differs across the validation axes. In this way we validate both the measurements and their corresponding uncertainty estimates. By validating across a range of processing configurations, hydrologic conditions, and radar look geometries we interrogate the uncertainty models in great detail, including the following questions: How do (dis)agreements between modeled and empirical uncertainty differ across characteristics (look angle, land/water reflectance, channel geometry)? How do errors accumulate from pixel to node to reach scales? What phenomena are responsible for the largest errors? What assumptions encoded in uncertainty models are met, and which are violated? What further work is needed to validate and refine uncertainty models? We conclude with a prognosis for scaling up this validation as more data–simulated and real–become available.</p>
+<p>The Surface Water and Ocean Topography (SWOT, <span class="citation">(Fu et al. <a href="#ref-fu2012swot" role="doc-biblioref">2012</a>)</span>) mission will make spaceborne measurements of the world’s oceans, lakes, reservoirs, wetlands, and rivers once it is launched in 2021. River measurements will be aggregated to data products at multiple spatial scales to produce estimates of river height, with, spatial extent, surface slope, and discharge.</p>
+<p>SWOT has the potential to provide a record of major rivers on an unprecedented global scale. As this will be the first wide-swath radar altimetry satellite in orbit, extensive preliminary work is required to validate data collection and processing flows, ensuring that radar power and phase information translate into height, width, slope, and discharge.</p>
+<ul>
+<li>TODO: insert lit review of existing validation</li>
+</ul>
+<p>Opening</p>
+<ul>
+<li>Introduce objectives of SWOT mission, river data products</li>
+<li>Previous and ongoing validation work</li>
+<li>Reasons and methods for uncertainty estimation
+<ul>
+<li>Sources of uncertainty</li>
+<li>Models of uncertainty using SWOT-observable information</li>
+</ul></li>
+</ul>
+<p>While validation of SWOT estimates has begun using simulated and AirSWOT data, the uncertainty component of these estimates remains largely unverified. Validation is challenging for several reasons. Uncertainty is accumulated from a multitude of sources including radar speckle, satellite position and roll, media delays caused by Earth’s atmosphere, layover, and phase unwrapping. Assessing each component’s contribution to overall error is not straightforward. Errors are dependent on a variety of factors that vary within and between rivers on a range of temporal and spatial scales, requiring validation data that are both finely detailed and wide-ranging (encompassing a variety of SWOT rivers).</p>
+<p>In order to be useful for refining uncertainty estimates, a validation of uncertainty models should be predictive of error magnitude using only a set of SWOT-observable or a-priori variables and applicable to cases outside of those used in the validation study.</p>
+<p>In this study we present a validation of SWOT measurement uncertainty at the river node and reach scales. The products of this validation are threefold. First, we quantify the degree to which empirical distributions of measurement errors match modeled uncertainty across all validation data. Second, we describe and quantify discrepancies between empirical and theoretical error magnitude as a function of several characteristics including number of pixels/nodes, viewing geometry, and layover characteristics. Finally, we develop, calibrate, and validate a model for refining a priori uncertainty estimates using only information available from SWOT and a priori measurements. For the purposes of validation “truth” we employ simulated SWOT observations from several intensively modeled rivers spanning a range of hydraulic regimes, flow geometry, and catchment topography. We conclude with a prognosis for scaling up this validation as more data–simulated and real–become available. We envision this validation framework–particularly the model–being deployed as an additional postprocessing layer used to empirically scale uncertainty estimates within the SWOT river data products.</p>
 
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
-<div id="ref-swot2018calval">
-<p>?? 2018. “SWOT Calibration / Validation Plan.” Jet Propulsion Laboratory, California Institute of Technology; NASA.</p>
-</div>
-<div id="ref-altenau2017">
-<p>Altenau, Elizabeth H, Tamlin M Pavelsky, Delwyn Moller, Christine Lion, Lincoln H Pitcher, George H Allen, Paul D Bates, Stéphane Calmant, Michael Durand, and Laurence C Smith. 2017. “AirSWOT Measurements of River Water Surface Elevation and Slope: Tanana River, Ak.” <em>Geophysical Research Letters</em> 44 (1): 181–89.</p>
-</div>
-<div id="ref-andreadis2018">
-<p>Andreadis, Konstantinos M. 2018. “Data Assimilation and River Hydrodynamic Modeling over Large Scales.” In <em>Global Flood Hazard: Applications in Modeling, Mapping, and Forecasting</em>, 229–37. Hoboken, NJ, USA: Wiley Online Library.</p>
-</div>
-<div id="ref-durand2016">
-<p>Durand, Michael, CJ Gleason, Pierre-André Garambois, David Bjerklie, LC Smith, Hélène Roux, Ernesto Rodriguez, et al. 2016. “An Intercomparison of Remote Sensing River Discharge Estimation Algorithms from Measurements of River Height, Width, and Slope.” <em>Water Resources Research</em> 52 (6): 4527–49.</p>
-</div>
-<div id="ref-durand2014">
-<p>Durand, Michael, Jeffrey Neal, Ernesto Rodrı́guez, Konstantinos M Andreadis, Laurence C Smith, and Yeosang Yoon. 2014. “Estimating Reach-Averaged Discharge for the River Severn from Measurements of River Water Surface Elevation and Slope.” <em>Journal of Hydrology</em> 511: 92–104.</p>
-</div>
 <div id="ref-fu2012swot">
 <p>Fu, Lee-Lueng, Douglas Alsdorf, Rosemary Morrow, Ernesto Rodriguez, and Nelly Mognard. 2012. “SWOT: The Surface Water and Ocean Topography Mission: Wide-Swath Altimetric Elevation on Earth.” Jet Propulsion Laboratory, California Institute of Technology; NASA.</p>
-</div>
-<div id="ref-gleason2017">
-<p>Gleason, CJ, PA Garambois, and MT Durand. 2017. “Water, Satellites, and Mass Conservation: Tracking River Flows from Space.” <em>Eos, Transactions American Geophysical Union</em> 98.</p>
-</div>
-<div id="ref-oubanas2018">
-<p>Oubanas, Hind, Igor Gejadze, Pierre-Olivier Malaterre, and Franck Mercier. 2018. “River Discharge Estimation from Synthetic Swot-Type Observations Using Variational Data Assimilation and the Full Saint-Venant Hydraulic Model.” <em>Journal of Hydrology</em> 559: 638–47.</p>
-</div>
-<div id="ref-pitcher2019">
-<p>Pitcher, Lincoln H, Tamlin M Pavelsky, Laurence C Smith, Delwyn K Moller, Elizabeth H Altenau, George H Allen, Christine Lion, et al. 2019. “AirSWOT Insar Mapping of Surface Water Elevations and Hydraulic Gradients Across the Yukon Flats Basin, Alaska.” <em>Water Resources Research</em> 55 (2): 937–53.</p>
-</div>
-<div id="ref-tuozzolo2019">
-<p>Tuozzolo, S, G Lind, B Overstreet, J Mangano, M Fonstad, M Hagemann, RPM Frasson, et al. 2019. “Estimating River Discharge with Swath Altimetry: A Proof of Concept Using Airswot Observations.” <em>Geophysical Research Letters</em> 46 (3): 1459–66.</p>
 </div>
 </div>
             </section>
@@ -155,11 +144,13 @@
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
