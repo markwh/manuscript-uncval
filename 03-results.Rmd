@@ -72,3 +72,12 @@ scatter_reach_final
 ```
 
 
+
+## Large width errors
+
+Both the node-scale and reach-scale errors have right-skewed distributions, resulting from relatively infrequent sections of river having outsized influence on the aggregated errors. These errors result mainly from three distinct phenomena: complex channel geometry, spurious contiguity of water pixels, and narrow channels relative to pixel size. These are described in detail in the following text, and illustrated in Figure ####. 
+
+1. Complex channel geometry that cannot be resolved, either due to pixel size or regularization in slant plane (Fig. ####a)
+2. Sections of water that are contiguous in the PIXC slant plane but not in the validation slant plane, resulting in pixels for a given area of water being assigned to nodes in the PIXC that are not assigned to the node in the GDEM PIXC. (Fig. ####b)
+3. Stretches of river that are narrow in comparison to the pixel size, with an apparent positive bias in water fraction estimates for water-edge pixels. (Fig. ####c). 
+
