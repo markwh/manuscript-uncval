@@ -1,7 +1,7 @@
 --- 
 title: "Uncertainty Validation"
 author: "Mark Hagemann"
-date: "2019-10-23"
+date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::pdf_book
 documentclass: book
@@ -14,7 +14,11 @@ description: "A synthesis of SWOT uncertainty model validation using simulations
 
 # Abstract
 
-
+```{r, include = FALSE}
+library(knitr)
+library(dplyr)
+opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
 
 
 <!--chapter:end:index.Rmd-->
@@ -118,11 +122,42 @@ where RMSE is the model root mean squared error, $x_i$ is the along-reach locati
 
 ## Simulated Datasets
 
-
+```{r, eval = FALSE}
+load("robjs/pixcvaldf.RData")
+length(unique(pixcvaldf$node_id))
+length(unique(pixcvaldf$reach_id))
+min(pixcvaldf$latitude)
+max(pixcvaldf$latitude)
+```
 
 The study area consists of 734 nodes comprising 10 reaches in the Sacramento River between 38.92 and 39.75 degrees latitude (Figure ####). Simulated SWOT data products were produced using a hydrodynamic model of the river forced by historic observed flow conditions and observed bathymetry. The resulting spatially distributed water-surface elevations were used to produce a simulated single-look complex (SLC) data product using a SLC simulator program producted by Jet Propulsion Laboratory. This simulator mimics various radar phenomena including ####. The simulated SLC products were processed using the SWOT processing chain to create the pixel, node, and reach river products. 
 
-![](_main_files/figure-latex/maps-1.pdf)<!-- --> ![](_main_files/figure-latex/maps-2.pdf)<!-- --> ![](_main_files/figure-latex/maps-3.pdf)<!-- --> 
+```{r maps}
+library(ggplot2)
+theme_set(theme_bw())
+load("robjs/map_gg.RData")
+load("robjs/map_zoomin.RData")
+maplims <- list(xmin = -122.63, xmax = -121.2, ymin = 38.78, ymax = 39.9)
+linedf <- with(maplims, data.frame(lon = c(xmin, xmin, xmax, xmax, xmin), 
+                                   lat = c(ymin, ymax, ymax, ymin, ymin)))
+map_gg + guides(color = "none") +
+  xlim(maplims$xmin, maplims$xmax) + 
+  ylim(maplims$ymin, maplims$ymax) +
+    theme(
+        rect = element_rect(fill = "transparent") # all rectangles
+      )
+map_zoomin + guides(color = "none") +
+    theme(
+        rect = element_rect(fill = "transparent") # all rectangles
+      )
+
+maps::map("state", "california", plot = TRUE, bg = "transparent", 
+          fill = TRUE, col = "white"); lines(lat ~ lon, data = linedf)
+
+
+
+
+```
 
 
 Validation of the simulated products requires a truth dataset; this was derived from a Global Digital Elevation Map (GDEM) model, produced from the ASTER NASA satellite. The GDEM was used to create a synthetic pixel cloud directly (in this case no precurser SLC was produced) and processed to create truth data for nodes and reaches in the study area. ####
@@ -135,35 +170,29 @@ For each of the two simulation sets, 9 simulations were created using 3 passes a
 
 
 
-
-\begin{tabular}{r|r|r|r|r}
-\hline
-Date & Pass & n. nodes & flow (CFS) & flow pcntl.\\
-\hline
-2009-01-30 & 249 & 13131 & 4662 & 6.5\\
-\hline
-2009-01-31 & 264 & 7473 & 4595 & 5.9\\
-\hline
-2009-02-09 & 527 & 13143 & 4999 & 10.0\\
-\hline
-2009-02-20 & 249 & 13131 & 9224 & 67.3\\
-\hline
-2009-02-21 & 264 & 7473 & 7659 & 53.7\\
-\hline
-2009-03-02 & 527 & 13143 & 36610 & 95.7\\
-\hline
-2009-03-13 & 249 & 13131 & 6515 & 34.8\\
-\hline
-2009-03-14 & 264 & 7473 & 6370 & 32.3\\
-\hline
-2009-03-23 & 527 & 13143 & 6639 & 36.7\\
-\hline
-\end{tabular}
+```{r}
+load("robjs/run_tbl.RData")
+run_tbl %>% 
+  select(-day) %>% 
+  arrange(date) %>% 
+  transmute(Date = date, Pass = pass, 
+            `n. nodes` = n_nodes, 
+            `flow (CFS)` = flow, 
+            `flow pcntl.` = flow_pctile) %>% 
+  kable(digits = 1, align = "r")
+```
 
 
-![](_main_files/figure-latex/npx_xtk_gg-1.pdf)<!-- --> 
+```{r npx_xtk_gg}
+load("robjs/npx_xtk_gg.RData")
+npx_xtk_gg +
+  xlim(0, 65000)
+```
 
-![](_main_files/figure-latex/ecdf_gg-1.pdf)<!-- --> 
+```{r ecdf_gg}
+load("robjs/ecdf_gg.RData")
+ecdf_gg
+```
 
 
 ## Error scaling 
@@ -182,7 +211,10 @@ Thus scaled, the errors $e_{st}$ can be compared across locations and times in o
 
 <!--chapter:end:02-methods.Rmd-->
 
-
+```{r}
+library(ggplot2)
+theme_set(theme_bw())
+```
 
 
 # Results
@@ -193,16 +225,31 @@ How well do uncertainty models characterize empirical errrors from simulated SWO
 
 Scaled node-level errors varied in behavior across the different simulations and variables. Height error RMSE was generally less than 1.3 for the realistic simulations--with most of this coming from bias--and less than 1.1 for the idealized simulations--which had negligible bias. Scaled width errors were more variable, with RMSE as high as 5x the model-predicted RMSE in the simple aggregation, 2x the predicted RMSE using composite aggregation, and 1.5x the predicted RMSE using water-fraction aggregation. The simulation parameters--idealized versus realistic--had only a minor effect on width error statistics.
 
-![](_main_files/figure-latex/nodesdplot-1.pdf)<!-- --> ![](_main_files/figure-latex/nodesdplot-2.pdf)<!-- --> 
+```{r nodesdplot}
+load("robjs/nodesdplot.RData")
+load("robjs/nodesdplot_raw.RData")
+nodesdplot
+nodesdplot_raw
+```
 
 
 Normal quantile-quantile (QQ) plots (Fig. ####) compare the emprical scaled errors to the theoretical $N(0, 1)$ distribution (solid black line) for "water fraction" aggregtion and idealized simulation parameters. This distinguishes characteristics of the empirical error distribution including bias (vertical offset from 1:1 line), standard deviation (slope of points), and departures from normality, for instance heavy tails. Based on Fig. ####, the uncertainty model for height adequately characterized uncertainty across all simulation dates and for all parts of the distribution, with approximately standard normal scaled errors. In contrast, scaled width errors exhibit heavy-tailed distributions, especially at the upper tail, corresponding to errors that are much higher than would be expected if the errors were normally distributed. Despite this behavior in the tails, the middle of the scaled width error distribution was more well-behaved, with small but non-negligible bias depending on the simulation date. 
 
-![](_main_files/figure-latex/qqplot_byday-1.pdf)<!-- --> 
+```{r qqplot_byday}
+load("robjs/qqgg_nodes_frac_low.RData")
+qqgg_nodes_frac_low
+```
 
 In aggregate across all simulation days, distributions of scaled node height and width errors exhibit broadly the same characteristics as the same distributions for individual simulation days, but differ in severity by depending on the simulation parameters (Fig. ####). Width errors were closest in distribution to standard normal for the "water fraction" aggregation method, while using the composite method resulted in a heavier right-skew, and the simple mehtod had both a severely large upper tail as well as higher variance throughout the distribution (Fig. ####a). Height error distributions were unaffected by aggregation method, but adding simulation noise resulted in significant bias and slightly larger variance (Fig. ####b. 
 
-![](_main_files/figure-latex/qqplot_bycondition-1.pdf)<!-- --> ![](_main_files/figure-latex/qqplot_bycondition-2.pdf)<!-- --> 
+```{r qqplot_bycondition}
+load("robjs/wseqq_compare.RData")
+load("robjs/widthqq_compare_all3.RData")
+
+widthqq_compare_all3
+wseqq_compare
+
+```
 
 
 ### Factors affecting node-level errors and uncertainty
@@ -211,13 +258,19 @@ Node-level height errors vary as a function of the number of pixels per node and
 
 
 
-![](_main_files/figure-latex/wse_scatter-1.pdf)<!-- --> 
+```{r wse_scatter}
+load("robjs/wseerr_gg1.RData")
+wseerr_gg1
+```
 
 
 Width errors are also affected by pixel size, but are not otherwise affected by cross-track distance, resulting in the error and uncertainty profile shown in Fig. ####a-d. While the scaled width errors are not as well-behaved as the height errors and exceed 10 or 20 times the estimated $1\sigma$ uncertainty, they exhibit no discernable patterns when plotted against pixel count or cross-track distance, suggesting that these effects are well characterized by the uncertainty model. 
 
 
-![](_main_files/figure-latex/width_scatter-1.pdf)<!-- --> 
+```{r width_scatter}
+load("robjs/widtherr_gg1.RData")
+widtherr_gg1
+```
 
 
 ## Reach results 
@@ -226,7 +279,10 @@ Scaled reach-level errors for height and slope measurements (Fig. ####, top row)
 
 In the "realistic" simulations, introducing simulation noise primarily affected height errors--biasing many simulations' reach errors--but also had non-negligible effects on slope and width errors (Fig. ####, bottom row). Slope errors were larger in magnitude in some reaches--notably reaches 6 and 8. Width errors varied more sporadically, increasing or decreasing depending on the simulation day and reach. 
 
-![](_main_files/figure-latex/reach_scatter-1.pdf)<!-- --> 
+```{r reach_scatter}
+load("robjs/scatter_reach_final.RData")
+scatter_reach_final
+```
 
 
 
@@ -248,7 +304,10 @@ While pixel-level data do not have a 1:1 correspondence between simulated and va
 
 All 3 of these phenomena are spatially correlated--nodes that experience them tend to occur in clusters. Thus the resulting errors at the reach scale are larger in magnitude, since node-to-reach uncertainty accumulation assumes that errors are spatially independent. 
 
-![](_main_files/figure-latex/pix_maps-1.pdf)<!-- --> 
+```{r pix_maps}
+load("robjs/pixmapgg.RData")
+pixmapgg
+```
 
 
 

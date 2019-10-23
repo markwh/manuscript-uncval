@@ -3,7 +3,7 @@ title: "Uncertainty Validation"
 author: "Mark Hagemann"
 date: "2019-10-23"
 site: bookdown::bookdown_site
-output: bookdown::gitbook
+output: bookdown::pdf_book
 documentclass: book
 bibliography: sources.bib
 biblio-style: apalike
@@ -21,29 +21,19 @@ description: "A synthesis of SWOT uncertainty model validation using simulations
 
 # Introduction
 
-The Surface Water and Ocean Topography (SWOT, [@fu2012swot]) mission will make spaceborne measurements of the world's oceans, lakes, reservoirs, wetlands, and rivers once it is launched in 2021. River measurements will be aggregated to data products at multiple spatial scales to produce estimates of river height, with, spatial extent, surface slope, and discharge. 
-
-SWOT has the potential to provide a record of major rivers on an unprecedented global scale.  As this will be the first wide-swath radar altimetry satellite in orbit, extensive preliminary work is required to validate data collection and processing flows, ensuring that radar power and phase information translate into height, width, slope, and discharge. 
-
-- TODO: insert lit review of existing validation
+The Surface Water and Ocean Topography (SWOT, [@fu2012swot]) mission will join the fleet of earth observation satellites upon its launch in 2021. Thereafter it will begin its mission of monitoring the world's oceans, lakes, reservoirs, wetlands, and rivers, providing some #### GB per day of information to the scientific community. This flow of data will be the first of its kind, involving instrumentation and data processing pipelines never before deployed. The termini of these data streams will be a variety of data products whose veracity and reliability are essential to the pursuit and application of hydrologic science.
 
 
+The hydrology (**S**urface **W**ater) data measured by SWOT--including width, slope, and elevation relative to geoid on rivers whose average width is over 100m. This information will become publically accessible datasets with expected applications including discharge estimation in ungaged basins [@durand2016; @gleason2017], data assimilation with hydraulic models [@andreadis2018; @oubanas2018], ####
+
+River measurements will be aggregated to data products at multiple spatial scales to produce estimates of river height, with, spatial extent, surface slope, and discharge. Because these measurements are often combined probabilistically with other data sources--e.g. prior distributions in Bayesian discharge estimation [@durand2014; @hagemann2017], or hydrodynamic models in data assimilation [@andreadis2018; @oubanas2018]--SWOT data products will contain uncertainty estimates associated with measured variables. The measurements and the associated uncertainty estimates are derived from physics-based equations that relate the quantities of interest to known and directly measured quantities including satellite position, radar range, power, and interferometric phase. 
+
+Validation of SWOT data products and underlying processing pipelines is an ongoing effort, the culmination of which will come only after the satellite is in orbit. The first 3 months of the SWOT mission will be devoted to instrument calibration and processing validation (cal/val), employing a fast-sampling orbit wherein the orbit time for selected cal/val sites will be ~1 day [@swot2018calval]. This sampling will coincide with field surveys generating in-situ comparison datasets. In order to benchmark instrument performance prior to launch, an airborne instrument, termed AirSWOT, was developed to produce data analogous to the SWOT satellite [@altenau2017; @tuozzolo2019; @pitcher2019]. While this effort was successful in demonstrating the ability for SWOT to measure slope and water surface elevation, the many differences between the airborne and spaceborne missions (e.g. look angle, swath size) preclude this data from being used to validate of uncertainty models, which to date remain largely unverified. 
+
+Meanwhile, verification of data processing flows has been proceeding using simulated data products generated from modeled terrain, hydrology, satellite trajectory, and radar physics. The most recent generation of simulations include estimates of uncertainty accompanying simulated measurements. 
 
 
-Opening
-
-- Introduce objectives of SWOT mission, river data products
-- Previous and ongoing validation work
-- Reasons and methods for uncertainty estimation
-    - Sources of uncertainty
-    - Models of uncertainty using SWOT-observable information
-
-While validation of SWOT estimates has begun using simulated and AirSWOT data, the uncertainty component of these estimates remains largely unverified. Validation is challenging for several reasons. Uncertainty is accumulated from a multitude of sources including radar speckle, satellite position and roll, media delays caused by Earth's atmosphere, layover, and phase unwrapping. Assessing each component's contribution to overall error is not straightforward. Errors are dependent on a variety of factors that vary within and between rivers on a range of temporal and spatial scales, requiring validation data that are both finely detailed and wide-ranging (encompassing a variety of SWOT rivers).  
-
-In order to be useful for refining uncertainty estimates, a validation of uncertainty models should be predictive of error magnitude using only a set of SWOT-observable or a-priori variables and applicable to cases outside of those used in the validation study.
-
-
-In this study we present a validation of SWOT measurement uncertainty at the river node and reach scales. The products of this validation are threefold. First, we quantify the degree to which empirical distributions of measurement errors match modeled uncertainty across all validation data. Second, we describe and quantify discrepancies between empirical and theoretical error magnitude as a function of several characteristics including number of pixels/nodes, viewing geometry, and layover characteristics. Finally, we develop, calibrate, and validate a model for refining a priori uncertainty estimates using only information available from SWOT and a priori measurements. For the purposes of validation "truth" we employ simulated SWOT observations from several intensively modeled rivers spanning a range of hydraulic regimes, flow geometry, and catchment topography. We conclude with a prognosis for scaling up this validation as more data--simulated and real--become available. We envision this validation framework--particularly the model--being deployed as an additional postprocessing layer used to empirically scale uncertainty estimates within the SWOT river data products.
+In this study, we use simulated data products to validate river measurements against synthetic truth data in order to assess how well empirical (albeit simulated) errors comport with model-encoded expectations. Our purpose is not to investigate measurement errors directly--that is, how measured values differ from truth--but instead to determine how these errors behave vis a vis the measurements' accompanying uncertainty estimates. Thus instead of questioning how errors behave across a range of validation characteristics, we seek to answer how the behavior of errors *relative to estimated uncertainty* differs across the validation axes. In this way we validate both the measurements and their corresponding uncertainty estimates. By validating across a range of processing configurations, hydrologic conditions, and radar look geometries we interrogate the uncertainty models in great detail, including the following questions: How do (dis)agreements between modeled and empirical uncertainty differ across characteristics (look angle, land/water reflectance, channel geometry)? How do errors accumulate from pixel to node to reach scales? What phenomena are responsible for the largest errors? What assumptions encoded in uncertainty models are met, and which are violated? What further work is needed to validate and refine uncertainty models? We conclude with a prognosis for scaling up this validation as more data--simulated and real--become available. 
 
 
 
@@ -132,7 +122,7 @@ where RMSE is the model root mean squared error, $x_i$ is the along-reach locati
 
 The study area consists of 734 nodes comprising 10 reaches in the Sacramento River between 38.92 and 39.75 degrees latitude (Figure ####). Simulated SWOT data products were produced using a hydrodynamic model of the river forced by historic observed flow conditions and observed bathymetry. The resulting spatially distributed water-surface elevations were used to produce a simulated single-look complex (SLC) data product using a SLC simulator program producted by Jet Propulsion Laboratory. This simulator mimics various radar phenomena including ####. The simulated SLC products were processed using the SWOT processing chain to create the pixel, node, and reach river products. 
 
-<img src="_main_files/figure-html/maps-1.png" width="672" /><img src="_main_files/figure-html/maps-2.png" width="672" /><img src="_main_files/figure-html/maps-3.png" width="672" />
+![](_main_files/figure-latex/maps-1.pdf)<!-- --> ![](_main_files/figure-latex/maps-2.pdf)<!-- --> ![](_main_files/figure-latex/maps-3.pdf)<!-- --> 
 
 
 Validation of the simulated products requires a truth dataset; this was derived from a Global Digital Elevation Map (GDEM) model, produced from the ASTER NASA satellite. The GDEM was used to create a synthetic pixel cloud directly (in this case no precurser SLC was produced) and processed to create truth data for nodes and reaches in the study area. ####
@@ -146,22 +136,34 @@ For each of the two simulation sets, 9 simulations were created using 3 passes a
 
 
 
-       Date   Pass   n. nodes   flow (CFS)   flow pcntl.
------------  -----  ---------  -----------  ------------
- 2009-01-30    249      13131         4662           6.5
- 2009-01-31    264       7473         4595           5.9
- 2009-02-09    527      13143         4999          10.0
- 2009-02-20    249      13131         9224          67.3
- 2009-02-21    264       7473         7659          53.7
- 2009-03-02    527      13143        36610          95.7
- 2009-03-13    249      13131         6515          34.8
- 2009-03-14    264       7473         6370          32.3
- 2009-03-23    527      13143         6639          36.7
+\begin{tabular}{r|r|r|r|r}
+\hline
+Date & Pass & n. nodes & flow (CFS) & flow pcntl.\\
+\hline
+2009-01-30 & 249 & 13131 & 4662 & 6.5\\
+\hline
+2009-01-31 & 264 & 7473 & 4595 & 5.9\\
+\hline
+2009-02-09 & 527 & 13143 & 4999 & 10.0\\
+\hline
+2009-02-20 & 249 & 13131 & 9224 & 67.3\\
+\hline
+2009-02-21 & 264 & 7473 & 7659 & 53.7\\
+\hline
+2009-03-02 & 527 & 13143 & 36610 & 95.7\\
+\hline
+2009-03-13 & 249 & 13131 & 6515 & 34.8\\
+\hline
+2009-03-14 & 264 & 7473 & 6370 & 32.3\\
+\hline
+2009-03-23 & 527 & 13143 & 6639 & 36.7\\
+\hline
+\end{tabular}
 
 
-<img src="_main_files/figure-html/npx_xtk_gg-1.png" width="672" />
+![](_main_files/figure-latex/npx_xtk_gg-1.pdf)<!-- --> 
 
-<img src="_main_files/figure-html/ecdf_gg-1.png" width="672" />
+![](_main_files/figure-latex/ecdf_gg-1.pdf)<!-- --> 
 
 
 ## Error scaling 
@@ -191,16 +193,16 @@ How well do uncertainty models characterize empirical errrors from simulated SWO
 
 Scaled node-level errors varied in behavior across the different simulations and variables. Height error RMSE was generally less than 1.3 for the realistic simulations--with most of this coming from bias--and less than 1.1 for the idealized simulations--which had negligible bias. Scaled width errors were more variable, with RMSE as high as 5x the model-predicted RMSE in the simple aggregation, 2x the predicted RMSE using composite aggregation, and 1.5x the predicted RMSE using water-fraction aggregation. The simulation parameters--idealized versus realistic--had only a minor effect on width error statistics.
 
-<img src="_main_files/figure-html/nodesdplot-1.png" width="672" /><img src="_main_files/figure-html/nodesdplot-2.png" width="672" />
+![](_main_files/figure-latex/nodesdplot-1.pdf)<!-- --> ![](_main_files/figure-latex/nodesdplot-2.pdf)<!-- --> 
 
 
 Normal quantile-quantile (QQ) plots (Fig. ####) compare the emprical scaled errors to the theoretical $N(0, 1)$ distribution (solid black line) for "water fraction" aggregtion and idealized simulation parameters. This distinguishes characteristics of the empirical error distribution including bias (vertical offset from 1:1 line), standard deviation (slope of points), and departures from normality, for instance heavy tails. Based on Fig. ####, the uncertainty model for height adequately characterized uncertainty across all simulation dates and for all parts of the distribution, with approximately standard normal scaled errors. In contrast, scaled width errors exhibit heavy-tailed distributions, especially at the upper tail, corresponding to errors that are much higher than would be expected if the errors were normally distributed. Despite this behavior in the tails, the middle of the scaled width error distribution was more well-behaved, with small but non-negligible bias depending on the simulation date. 
 
-<img src="_main_files/figure-html/qqplot_byday-1.png" width="672" />
+![](_main_files/figure-latex/qqplot_byday-1.pdf)<!-- --> 
 
 In aggregate across all simulation days, distributions of scaled node height and width errors exhibit broadly the same characteristics as the same distributions for individual simulation days, but differ in severity by depending on the simulation parameters (Fig. ####). Width errors were closest in distribution to standard normal for the "water fraction" aggregation method, while using the composite method resulted in a heavier right-skew, and the simple mehtod had both a severely large upper tail as well as higher variance throughout the distribution (Fig. ####a). Height error distributions were unaffected by aggregation method, but adding simulation noise resulted in significant bias and slightly larger variance (Fig. ####b. 
 
-<img src="_main_files/figure-html/qqplot_bycondition-1.png" width="672" /><img src="_main_files/figure-html/qqplot_bycondition-2.png" width="672" />
+![](_main_files/figure-latex/qqplot_bycondition-1.pdf)<!-- --> ![](_main_files/figure-latex/qqplot_bycondition-2.pdf)<!-- --> 
 
 
 ### Factors affecting node-level errors and uncertainty
@@ -209,13 +211,13 @@ Node-level height errors vary as a function of the number of pixels per node and
 
 
 
-<img src="_main_files/figure-html/wse_scatter-1.png" width="672" />
+![](_main_files/figure-latex/wse_scatter-1.pdf)<!-- --> 
 
 
 Width errors are also affected by pixel size, but are not otherwise affected by cross-track distance, resulting in the error and uncertainty profile shown in Fig. ####a-d. While the scaled width errors are not as well-behaved as the height errors and exceed 10 or 20 times the estimated $1\sigma$ uncertainty, they exhibit no discernable patterns when plotted against pixel count or cross-track distance, suggesting that these effects are well characterized by the uncertainty model. 
 
 
-<img src="_main_files/figure-html/width_scatter-1.png" width="672" />
+![](_main_files/figure-latex/width_scatter-1.pdf)<!-- --> 
 
 
 ## Reach results 
@@ -224,9 +226,17 @@ Scaled reach-level errors for height and slope measurements (Fig. ####, top row)
 
 In the "realistic" simulations, introducing simulation noise primarily affected height errors--biasing many simulations' reach errors--but also had non-negligible effects on slope and width errors (Fig. ####, bottom row). Slope errors were larger in magnitude in some reaches--notably reaches 6 and 8. Width errors varied more sporadically, increasing or decreasing depending on the simulation day and reach. 
 
-<img src="_main_files/figure-html/reach_scatter-1.png" width="672" />
+![](_main_files/figure-latex/reach_scatter-1.pdf)<!-- --> 
 
 
+
+## Large width errors
+
+Both the node-scale and reach-scale errors have right-skewed distributions, resulting from relatively infrequent sections of river having outsized influence on the aggregated errors. These errors result mainly from three distinct phenomena: complex channel geometry, spurious contiguity of water pixels, and narrow channels relative to pixel size. These are described in detail in the following text, and illustrated in Figure ####. 
+
+1. Complex channel geometry that cannot be resolved, either due to pixel size or regularization in slant plane (Fig. ####a)
+2. Sections of water that are contiguous in the PIXC slant plane but not in the validation slant plane, resulting in pixels for a given area of water being assigned to nodes in the PIXC that are not assigned to the node in the GDEM PIXC. (Fig. ####b)
+3. Stretches of river that are narrow in comparison to the pixel size, with an apparent positive bias in water fraction estimates for water-edge pixels. (Fig. ####c). 
 
 ### Illustration of nodes with large errors
 
@@ -238,8 +248,7 @@ While pixel-level data do not have a 1:1 correspondence between simulated and va
 
 All 3 of these phenomena are spatially correlated--nodes that experience them tend to occur in clusters. Thus the resulting errors at the reach scale are larger in magnitude, since node-to-reach uncertainty accumulation assumes that errors are spatially independent. 
 
-<img src="_main_files/figure-html/pix_maps-1.png" width="672" />
-
+![](_main_files/figure-latex/pix_maps-1.pdf)<!-- --> 
 
 
 

@@ -80,8 +80,9 @@
 <li class="chapter" data-level="4.1" data-path="results.html"><a href="results.html#node-results"><i class="fa fa-check"></i><b>4.1</b> Node Results</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="results.html"><a href="results.html#factors-affecting-node-level-errors-and-uncertainty"><i class="fa fa-check"></i><b>4.1.1</b> Factors affecting node-level errors and uncertainty</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#reach-results"><i class="fa fa-check"></i><b>4.2</b> Reach results</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="results.html"><a href="results.html#illustration-of-nodes-with-large-errors"><i class="fa fa-check"></i><b>4.2.1</b> Illustration of nodes with large errors</a></li>
+<li class="chapter" data-level="4.2" data-path="results.html"><a href="results.html#reach-results"><i class="fa fa-check"></i><b>4.2</b> Reach results</a></li>
+<li class="chapter" data-level="4.3" data-path="results.html"><a href="results.html#large-width-errors"><i class="fa fa-check"></i><b>4.3</b> Large width errors</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="results.html"><a href="results.html#illustration-of-nodes-with-large-errors"><i class="fa fa-check"></i><b>4.3.1</b> Illustration of nodes with large errors</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>5</b> Discussion</a><ul>
@@ -129,8 +130,17 @@
 <p>Scaled reach-level errors for height and slope measurements (Fig. ####, top row) were apparently unbiased and fell generally between -2 and 2 in the idealized simulations, reflecting well-characterized uncertainties. As at the node level, corresponding width errors were less well-behaved, reaching as much as 10 times the <span class="math inline">\(1\sigma\)</span> uncertainty estimate. The magnitude of scaled width errors were larger on average than at the node scale, resulting from violations of underlying assumptions (zero bias, independence) when aggregating node to reach uncertainty.</p>
 <p>In the “realistic” simulations, introducing simulation noise primarily affected height errors–biasing many simulations’ reach errors–but also had non-negligible effects on slope and width errors (Fig. ####, bottom row). Slope errors were larger in magnitude in some reaches–notably reaches 6 and 8. Width errors varied more sporadically, increasing or decreasing depending on the simulation day and reach.</p>
 <p><img src="_main_files/figure-html/reach_scatter-1.png" width="672" /></p>
+</div>
+<div id="large-width-errors" class="section level2">
+<h2><span class="header-section-number">4.3</span> Large width errors</h2>
+<p>Both the node-scale and reach-scale errors have right-skewed distributions, resulting from relatively infrequent sections of river having outsized influence on the aggregated errors. These errors result mainly from three distinct phenomena: complex channel geometry, spurious contiguity of water pixels, and narrow channels relative to pixel size. These are described in detail in the following text, and illustrated in Figure ####.</p>
+<ol style="list-style-type: decimal">
+<li>Complex channel geometry that cannot be resolved, either due to pixel size or regularization in slant plane (Fig. ####a)</li>
+<li>Sections of water that are contiguous in the PIXC slant plane but not in the validation slant plane, resulting in pixels for a given area of water being assigned to nodes in the PIXC that are not assigned to the node in the GDEM PIXC. (Fig. ####b)</li>
+<li>Stretches of river that are narrow in comparison to the pixel size, with an apparent positive bias in water fraction estimates for water-edge pixels. (Fig. ####c).</li>
+</ol>
 <div id="illustration-of-nodes-with-large-errors" class="section level3">
-<h3><span class="header-section-number">4.2.1</span> Illustration of nodes with large errors</h3>
+<h3><span class="header-section-number">4.3.1</span> Illustration of nodes with large errors</h3>
 <p>While pixel-level data do not have a 1:1 correspondence between simulated and validation data and thus cannot be compared directly, visual juxtaposition of pixel data illustrative of phenomena that lead to large width errors. These phenomena include:</p>
 <ol style="list-style-type: decimal">
 <li>Complex channel geometry that cannot be resolved, either due to pixel size or regularization in slant plane (Fig. ####a)</li>

@@ -3,7 +3,7 @@ title: "Uncertainty Validation"
 author: "Mark Hagemann"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-output: bookdown::gitbook
+output: bookdown::pdf_book
 documentclass: book
 bibliography: sources.bib
 biblio-style: apalike
