@@ -1,7 +1,7 @@
 --- 
 title: "Uncertainty Validation"
 author: "Mark Hagemann"
-date: "2019-10-22"
+date: "2019-10-23"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 documentclass: book

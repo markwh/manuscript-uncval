@@ -97,10 +97,17 @@ linedf <- with(maplims, data.frame(lon = c(xmin, xmin, xmax, xmax, xmin),
                                    lat = c(ymin, ymax, ymax, ymin, ymin)))
 map_gg + guides(color = "none") +
   xlim(maplims$xmin, maplims$xmax) + 
-  ylim(maplims$ymin, maplims$ymax)
-map_zoomin + guides(color = "none")
+  ylim(maplims$ymin, maplims$ymax) +
+    theme(
+        rect = element_rect(fill = "transparent") # all rectangles
+      )
+map_zoomin + guides(color = "none") +
+    theme(
+        rect = element_rect(fill = "transparent") # all rectangles
+      )
 
-maps::map("state", "california", plot = TRUE); lines(lat ~ lon, data = linedf)
+maps::map("state", "california", plot = TRUE, bg = "transparent", 
+          fill = TRUE, col = "white"); lines(lat ~ lon, data = linedf)
 
 
 
